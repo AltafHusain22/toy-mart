@@ -51,7 +51,7 @@ const Register = () => {
           const user = userCredential.user;
           Swal.fire("Good job!", "User Created Successfully !", "success");
           form.reset();
-          navigate('/login')
+          // navigate('/login')
         })
         .catch((error) => {
           const errorCode = error.code;
