@@ -22,9 +22,9 @@ const CategoryTabs = () => {
         <TabPanel>
           <Tabs forceRenderTabPanel>
             <TabList>
-              <Tab>Homer Simpson</Tab>
-              <Tab>Marge Simpson</Tab>
-              <Tab>Bart Simpson</Tab>
+              <Tab>Racer Speedy</Tab>
+              <Tab>Turbocharged Thrillers</Tab>
+              <Tab>Speed Demon Series</Tab>
             </TabList>
             <TabPanel>
               <p>Husband of Marge; father of Bart, Lisa, and Maggie.</p>
@@ -57,9 +57,9 @@ const CategoryTabs = () => {
         <TabPanel>
           <Tabs forceRenderTabPanel>
             <TabList>
-              <Tab>Philip J. Fry</Tab>
-              <Tab>Turanga Leela</Tab>
-              <Tab>Bender Bending Rodriguez</Tab>
+              <Tab>Extreme Speedsters</Tab>
+              <Tab>Turbo Boosters</Tab>
+              <Tab>Firestorm Racers</Tab>
             </TabList>
        
             <TabPanel>
@@ -91,14 +91,14 @@ const CategoryTabs = () => {
             </TabPanel>
           </Tabs>
         </TabPanel>
-		
+
 		{/* for 3nd tab */}
         <TabPanel>
           <Tabs forceRenderTabPanel>
             <TabList>
-              <Tab>Philip J. Fry</Tab>
-              <Tab>Turanga Leela</Tab>
-              <Tab>Bender Bending Rodriguez</Tab>
+              <Tab>Mega Off-Roaders</Tab>
+              <Tab>Monster Smashers</Tab>
+              <Tab>Beastly Crushers</Tab>
             </TabList>
        
             <TabPanel>
@@ -136,3 +136,5 @@ const CategoryTabs = () => {
 };
 
 export default CategoryTabs;
+
+
