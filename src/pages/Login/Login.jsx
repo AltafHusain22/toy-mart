@@ -2,29 +2,41 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const Login = () => {
+  const handleLogin = (event) => {
+    event.preventDefault();
+    const form = event.target;
+    const email = form.email.value;
+    const password = form.password.value;
+
+    const userInfo = {
+      email,
+      password,
+    };
+  };
+
   return (
-    <section class="bg-white  mt-20">
-      <div class="grid grid-cols-1 lg:grid-cols-2">
-        <div class="relative flex items-end px-4 pb-10 pt-60 sm:pb-16 md:justify-center lg:pb-24 bg-gray-50 sm:px-6 lg:px-8">
-          <div class="absolute inset-0">
+    <section className="bg-white  mt-20">
+      <div className="grid grid-cols-1 lg:grid-cols-2">
+        <div className="relative flex items-end px-4 pb-10 pt-60 sm:pb-16 md:justify-center lg:pb-24 bg-gray-50 sm:px-6 lg:px-8">
+          <div className="absolute inset-0">
             <img
-              class="object-cover object-top w-full h-full rounded-xl"
+              className="object-cover object-top w-full h-full rounded-xl"
               src="https://cdn.rareblocks.xyz/collection/celebration/images/signin/4/girl-thinking.jpg"
             />
           </div>
-          <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent"></div>
+          <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent"></div>
 
-          <div class="relative">
-            <div class="w-full max-w-xl xl:w-full xl:mx-auto xl:pr-24 xl:max-w-xl">
-			<h3 class="text-4xl font-bold text-white">
-                Join with Us to Get & <br class="hidden xl:block" />
+          <div className="relative">
+            <div className="w-full max-w-xl xl:w-full xl:mx-auto xl:pr-24 xl:max-w-xl">
+              <h3 className="text-4xl font-bold text-white">
+                Join with Us to Get & <br className="hidden xl:block" />
                 Awesome your Toys
               </h3>
-              <ul class="grid grid-cols-1 mt-10 sm:grid-cols-2 gap-x-8 gap-y-4">
-                <li class="flex items-center space-x-3">
-                  <div class="inline-flex items-center justify-center flex-shrink-0 w-5 h-5 bg-blue-500 rounded-full">
+              <ul className="grid grid-cols-1 mt-10 sm:grid-cols-2 gap-x-8 gap-y-4">
+                <li className="flex items-center space-x-3">
+                  <div className="inline-flex items-center justify-center flex-shrink-0 w-5 h-5 bg-blue-500 rounded-full">
                     <svg
-                      class="w-3.5 h-3.5 text-white"
+                      className="w-3.5 h-3.5 text-white"
                       xmlns="http://www.w3.org/2000/svg"
                       viewBox="0 0 20 20"
                       fill="currentColor"
@@ -36,15 +48,14 @@ const Login = () => {
                       ></path>
                     </svg>
                   </div>
-                  <span class="text-lg font-medium text-white">
-                  
+                  <span className="text-lg font-medium text-white">
                     Quality Products
                   </span>
                 </li>
-                <li class="flex items-center space-x-3">
-                  <div class="inline-flex items-center justify-center flex-shrink-0 w-5 h-5 bg-blue-500 rounded-full">
+                <li className="flex items-center space-x-3">
+                  <div className="inline-flex items-center justify-center flex-shrink-0 w-5 h-5 bg-blue-500 rounded-full">
                     <svg
-                      class="w-3.5 h-3.5 text-white"
+                      className="w-3.5 h-3.5 text-white"
                       xmlns="http://www.w3.org/2000/svg"
                       viewBox="0 0 20 20"
                       fill="currentColor"
@@ -56,15 +67,14 @@ const Login = () => {
                       ></path>
                     </svg>
                   </div>
-                  <span class="text-lg font-medium text-white">
-                    
-                    Fast Delivery 
+                  <span className="text-lg font-medium text-white">
+                    Fast Delivery
                   </span>
                 </li>
-                <li class="flex items-center space-x-3">
-                  <div class="inline-flex items-center justify-center flex-shrink-0 w-5 h-5 bg-blue-500 rounded-full">
+                <li className="flex items-center space-x-3">
+                  <div className="inline-flex items-center justify-center flex-shrink-0 w-5 h-5 bg-blue-500 rounded-full">
                     <svg
-                      class="w-3.5 h-3.5 text-white"
+                      className="w-3.5 h-3.5 text-white"
                       xmlns="http://www.w3.org/2000/svg"
                       viewBox="0 0 20 20"
                       fill="currentColor"
@@ -76,15 +86,14 @@ const Login = () => {
                       ></path>
                     </svg>
                   </div>
-                  <span class="text-lg font-medium text-white">
-                   
+                  <span className="text-lg font-medium text-white">
                     Exported Toys
                   </span>
                 </li>
-                <li class="flex items-center space-x-3">
-                  <div class="inline-flex items-center justify-center flex-shrink-0 w-5 h-5 bg-blue-500 rounded-full">
+                <li className="flex items-center space-x-3">
+                  <div className="inline-flex items-center justify-center flex-shrink-0 w-5 h-5 bg-blue-500 rounded-full">
                     <svg
-                      class="w-3.5 h-3.5 text-white"
+                      className="w-3.5 h-3.5 text-white"
                       xmlns="http://www.w3.org/2000/svg"
                       viewBox="0 0 20 20"
                       fill="currentColor"
@@ -96,9 +105,8 @@ const Login = () => {
                       ></path>
                     </svg>
                   </div>
-                  <span class="text-lg font-medium text-white">
-                    
-				  Reasonable Price
+                  <span className="text-lg font-medium text-white">
+                    Reasonable Price
                   </span>
                 </li>
               </ul>
@@ -106,41 +114,40 @@ const Login = () => {
           </div>
         </div>
 
-        <div class="flex items-center justify-center px-4 py-10 bg-white sm:px-6 lg:px-8 sm:py-16 lg:py-24">
-          <div class="xl:w-full xl:max-w-sm 2xl:max-w-md xl:mx-auto">
-            <h2 class="text-3xl font-bold leading-tight text-black sm:text-4xl">
+        <div className="flex items-center justify-center px-4 py-10 bg-white sm:px-6 lg:px-8 sm:py-16 lg:py-24">
+          <div className="xl:w-full xl:max-w-sm 2xl:max-w-md xl:mx-auto">
+            <h2 className="text-3xl font-bold leading-tight text-black sm:text-4xl">
               Sign in to Celebration
             </h2>
-            <p class="mt-2 text-base text-gray-600">
+            <p className="mt-2 text-base text-gray-600">
               Don’t have an account?
               <Link
-               	to={'/register'}
-                class="font-medium text-blue-600 transition-all duration-200 hover:text-blue-700 focus:text-blue-700 hover:underline"
+                to={"/register"}
+                className="font-medium text-blue-600 transition-all duration-200 hover:text-blue-700 focus:text-blue-700 hover:underline"
               >
                 Create a free account
               </Link>
             </p>
 
-            <form  class="mt-8">
-              <div class="space-y-5">
+            <form onSubmit={handleLogin} className="mt-8">
+              <div className="space-y-5">
                 <div>
-                  <label class="text-base font-medium text-gray-900">
-                    
+                  <label className="text-base font-medium text-gray-900">
                     Email address
                   </label>
-                  <div class="mt-2.5 relative text-gray-400 focus-within:text-gray-600">
-                    <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                  <div className="mt-2.5 relative text-gray-400 focus-within:text-gray-600">
+                    <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
                       <svg
-                        class="w-5 h-5"
+                        className="w-5 h-5"
                         xmlns="http://www.w3.org/2000/svg"
                         fill="none"
                         viewBox="0 0 24 24"
                         stroke="currentColor"
                       >
                         <path
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          stroke-width="2"
+                          ssstrokelinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth="2"
                           d="M16 12a4 4 0 10-8 0 4 4 0 008 0zm0 0v1.5a2.5 2.5 0 005 0V12a9 9 0 10-9 9m4.5-1.206a8.959 8.959 0 01-4.5 1.207"
                         />
                       </svg>
@@ -150,38 +157,40 @@ const Login = () => {
                       type="email"
                       name="email"
                       placeholder="Enter email to get started"
-                      class="block w-full py-4 pl-10 pr-4 text-black placeholder-gray-500 transition-all duration-200 border border-gray-200 rounded-md bg-gray-50 focus:outline-none focus:border-blue-600 focus:bg-white caret-blue-600"
+                      className="block w-full py-4 pl-10 pr-4 text-black placeholder-gray-500 transition-all duration-200 border border-gray-200 rounded-md bg-gray-50 focus:outline-none focus:border-blue-600 focus:bg-white caret-blue-600"
                     />
                   </div>
                 </div>
 
                 <div>
-                  <div class="flex items-center justify-between">
-                    <label htmlFor="" class="text-base font-medium text-gray-900">
+                  <div className="flex items-center justify-between">
+                    <label
+                      htmlFor=""
+                      className="text-base font-medium text-gray-900"
+                    >
                       Password
                     </label>
 
-                    <Link to={'#'}
-          
-                      class="text-sm font-medium text-blue-600 transition-all duration-200 hover:text-blue-700 focus:text-blue-700 hover:underline"
+                    <Link
+                      to={"#"}
+                      className="text-sm font-medium text-blue-600 transition-all duration-200 hover:text-blue-700 focus:text-blue-700 hover:underline"
                     >
-                      
                       Forgot password?
                     </Link>
                   </div>
-                  <div class="mt-2.5 relative text-gray-400 focus-within:text-gray-600">
-                    <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                  <div className="mt-2.5 relative text-gray-400 focus-within:text-gray-600">
+                    <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
                       <svg
-                        class="w-5 h-5"
+                        className="w-5 h-5"
                         xmlns="http://www.w3.org/2000/svg"
                         fill="none"
                         viewBox="0 0 24 24"
                         stroke="currentColor"
                       >
                         <path
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          stroke-width="2"
+                          ssstrokelinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth="2"
                           d="M12 11c0 3.517-1.009 6.799-2.753 9.571m-3.44-2.04l.054-.09A13.916 13.916 0 008 11a4 4 0 118 0c0 1.017-.07 2.019-.203 3m-2.118 6.844A21.88 21.88 0 0015.171 17m3.839 1.132c.645-2.266.99-4.659.99-7.132A8 8 0 008 4.07M3 15.364c.64-1.319 1-2.8 1-4.364 0-1.457.39-2.823 1.07-4"
                         />
                       </svg>
@@ -191,7 +200,7 @@ const Login = () => {
                       type="password"
                       name="password"
                       placeholder="Enter your password"
-                      class="block w-full py-4 pl-10 pr-4 text-black placeholder-gray-500 transition-all duration-200 border border-gray-200 rounded-md bg-gray-50 focus:outline-none focus:border-blue-600 focus:bg-white caret-blue-600"
+                      className="block w-full py-4 pl-10 pr-4 text-black placeholder-gray-500 transition-all duration-200 border border-gray-200 rounded-md bg-gray-50 focus:outline-none focus:border-blue-600 focus:bg-white caret-blue-600"
                     />
                   </div>
                 </div>
@@ -199,7 +208,7 @@ const Login = () => {
                 <div>
                   <button
                     type="submit"
-                    class="inline-flex items-center justify-center w-full px-4 py-4 text-base font-semibold text-white transition-all duration-200 border border-transparent rounded-md bg-gradient-to-r from-fuchsia-600 to-blue-600 focus:outline-none hover:opacity-80 focus:opacity-80"
+                    className="inline-flex items-center justify-center w-full px-4 py-4 text-base font-semibold text-white transition-all duration-200 border border-transparent rounded-md bg-gradient-to-r from-fuchsia-600 to-blue-600 focus:outline-none hover:opacity-80 focus:opacity-80"
                   >
                     Log in
                   </button>
@@ -207,14 +216,14 @@ const Login = () => {
               </div>
             </form>
 
-            <div class="mt-3 space-y-3">
+            <div className="mt-3 space-y-3">
               <button
                 type="button"
-                class="relative inline-flex items-center justify-center w-full px-4 py-4 text-base font-semibold text-gray-700 transition-all duration-200 bg-white border-2 border-gray-200 rounded-md hover:bg-gray-100 focus:bg-gray-100 hover:text-black focus:text-black focus:outline-none"
+                className="relative inline-flex items-center justify-center w-full px-4 py-4 text-base font-semibold text-gray-700 transition-all duration-200 bg-white border-2 border-gray-200 rounded-md hover:bg-gray-100 focus:bg-gray-100 hover:text-black focus:text-black focus:outline-none"
               >
-                <div class="absolute inset-y-0 left-0 p-4">
+                <div className="absolute inset-y-0 left-0 p-4">
                   <svg
-                    class="w-6 h-6 text-rose-500"
+                    className="w-6 h-6 text-rose-500"
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 24 24"
                     fill="currentColor"
@@ -227,11 +236,11 @@ const Login = () => {
 
               <button
                 type="button"
-                class="relative inline-flex items-center justify-center w-full px-4 py-4 text-base font-semibold text-gray-700 transition-all duration-200 bg-white border-2 border-gray-200 rounded-md hover:bg-gray-100 focus:bg-gray-100 hover:text-black focus:text-black focus:outline-none"
+                className="relative inline-flex items-center justify-center w-full px-4 py-4 text-base font-semibold text-gray-700 transition-all duration-200 bg-white border-2 border-gray-200 rounded-md hover:bg-gray-100 focus:bg-gray-100 hover:text-black focus:text-black focus:outline-none"
               >
-                <div class="absolute inset-y-0 left-0 p-4">
+                <div className="absolute inset-y-0 left-0 p-4">
                   <svg
-                    class="w-6 h-6 text-[#2563EB]"
+                    className="w-6 h-6 text-[#2563EB]"
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 24 24"
                     fill="currentColor"
