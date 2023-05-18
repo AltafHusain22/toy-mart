@@ -1,12 +1,12 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 const firebaseConfig = {
-  apiKey: "AIzaSyAix23GYIG4mwfCHLB3tmnTqE2j5xdQMEY",
-  authDomain: "toys-mart-78a65.firebaseapp.com",
-  projectId: "toys-mart-78a65",
-  storageBucket: "toys-mart-78a65.appspot.com",
-  messagingSenderId: "361043696232",
-  appId: "1:361043696232:web:71876aea2ee9ba970879dd"
+  apiKey: import.meta.env.VITE_APIKEY,
+  authDomain: import.meta.env.VITE_AUTHDOMAIN,
+  projectId: import.meta.env.VITE_PROJECTID,
+  storageBucket: import.meta.env.VITE_STORAGEBUCKET,
+  messagingSenderId: import.meta.env.VITE_MESSAGINGSENDERID,
+  appId: import.meta.env.VITE_APPID,
 };
 
 // Initialize Firebase
