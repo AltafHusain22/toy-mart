@@ -1,17 +1,51 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../context/AuthProvider";
+import Swal from "sweetalert2";
+import { ToastContainer, toast } from "react-toastify";
+
 
 const Login = () => {
+  const {LoginWithUserAndPass, googleSignUp} = useContext(AuthContext)
+
+  // handlegoogle signUp
+  const handleGoogleSignUp =()=>{
+    googleSignUp()
+    .then((result) => {
+      
+      const credential = GoogleAuthProvider.credentialFromResult(result);
+      const token = credential.accessToken;
+      const user = result.user;
+     
+    }).catch((error) => {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      const email = error.customData.email;
+      const credential = GoogleAuthProvider.credentialFromError(error);
+     
+    });
+}
+
   const handleLogin = (event) => {
     event.preventDefault();
     const form = event.target;
     const email = form.email.value;
     const password = form.password.value;
 
-    const userInfo = {
-      email,
-      password,
-    };
+      if(email, password){
+          LoginWithUserAndPass(email,password)
+          .then((userCredential) => {
+            const user = userCredential.user;
+            Swal.fire("Good job!", "LoggedIn Successfully !", "success");
+            form.reset();
+            
+          })
+          .catch((error) => {
+            const errorCode = error.code;
+            const errorMessage = error.message;
+          });
+
+      }
   };
 
   return (
@@ -218,6 +252,7 @@ const Login = () => {
 
             <div className="mt-3 space-y-3">
               <button
+                onClick={handleGoogleSignUp}
                 type="button"
                 className="relative inline-flex items-center justify-center w-full px-4 py-4 text-base font-semibold text-gray-700 transition-all duration-200 bg-white border-2 border-gray-200 rounded-md hover:bg-gray-100 focus:bg-gray-100 hover:text-black focus:text-black focus:outline-none"
               >
@@ -234,7 +269,7 @@ const Login = () => {
                 Sign in with Google
               </button>
 
-              <button
+              <button 
                 type="button"
                 className="relative inline-flex items-center justify-center w-full px-4 py-4 text-base font-semibold text-gray-700 transition-all duration-200 bg-white border-2 border-gray-200 rounded-md hover:bg-gray-100 focus:bg-gray-100 hover:text-black focus:text-black focus:outline-none"
               >

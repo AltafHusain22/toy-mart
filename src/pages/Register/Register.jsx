@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthProvider";
 import Swal from "sweetalert2";
 import { ToastContainer, toast } from "react-toastify";
@@ -7,6 +7,7 @@ import { ToastContainer, toast } from "react-toastify";
 const Register = () => {
   const { createUser,googleSignUp } = useContext(AuthContext);
   const [error, setError] = useState("");
+  const navigate = useNavigate()
 
   // handlegoogle signUp
   const handleGoogleSignUp =()=>{
@@ -16,6 +17,7 @@ const Register = () => {
         const credential = GoogleAuthProvider.credentialFromResult(result);
         const token = credential.accessToken;
         const user = result.user;
+        navigate('/login')
        
       }).catch((error) => {
         const errorCode = error.code;
@@ -49,6 +51,7 @@ const Register = () => {
           const user = userCredential.user;
           Swal.fire("Good job!", "User Created Successfully !", "success");
           form.reset();
+          navigate('/login')
         })
         .catch((error) => {
           const errorCode = error.code;
