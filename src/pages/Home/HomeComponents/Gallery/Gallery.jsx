@@ -15,7 +15,7 @@ useEffect(()=>{
   return (
 
     <section className="container mx-auto px-5 py-2 lg:px-32 lg:pt-12 md:mb-12">
-      <h2 className="font-bold md:text-5xl text-4xl mb-10 text-center mt-10">Gallery</h2>
+      <h2 className="font-bold md:text-5xl text-4xl mb-10 text-center mt-10">Products Gallery</h2>
         <div className="grid md:grid-cols-4 gap-5">
             {
               galleries.map(gallery => <>
