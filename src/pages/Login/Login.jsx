@@ -2,7 +2,11 @@ import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../context/AuthProvider";
 import Swal from "sweetalert2";
+
+import "sweetalert2/dist/sweetalert2.min.css";
 import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 
 
 const Login = () => {
@@ -149,7 +153,7 @@ const Login = () => {
             </div>
           </div>
         </div>
-
+        <ToastContainer />
         <div className="flex items-center justify-center px-4 py-10 bg-white sm:px-6 lg:px-8 sm:py-16 lg:py-24">
           <div className="xl:w-full xl:max-w-sm 2xl:max-w-md xl:mx-auto">
             {error}
@@ -198,6 +202,7 @@ const Login = () => {
                     />
                   </div>
                 </div>
+            
 
                 <div>
                   <div className="flex items-center justify-between">
