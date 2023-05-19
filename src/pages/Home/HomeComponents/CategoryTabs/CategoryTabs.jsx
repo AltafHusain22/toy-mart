@@ -2,13 +2,21 @@ import React, { useEffect, useState } from "react";
 import { Tab, TabList, Tabs, TabPanel } from "react-tabs";
 import "./tabs.css";
 import Racer from "./Racer/Racer";
+import TurboCharge from "./TurboCharge/TurboCharge";
 
 const CategoryTabs = () => {
   const [speedies, setSpeedies] = useState([]);
+  const [turbos, setTurboThrillers] = useState([]);
 
  
   useEffect(() => {
     fetch(`http://localhost:5000/TurboThrillers`)
+      .then((res) => res.json())
+      .then((data) => {
+        setTurboThrillers(data.products);
+      });
+
+    fetch(`http://localhost:5000/racerSpeedy`)
       .then((res) => res.json())
       .then((data) => {
         setSpeedies(data.products);
@@ -50,13 +58,13 @@ const CategoryTabs = () => {
             </TabPanel>
             <TabPanel>
               <div className="md:mt-10 mt-5 grid md:grid-cols-3 md:gap-10 gap-4">
-                {speedies.map((racers) => <Racer 
+                {turbos.map((turbo) => <TurboCharge 
                 
-                key={racers._id}
-                racers={racers}
+                key={turbo._id}
+                turbo={turbo}
                 
                 >
-                </Racer>)}
+                </TurboCharge>)}
               </div>
             </TabPanel>
           </Tabs>
