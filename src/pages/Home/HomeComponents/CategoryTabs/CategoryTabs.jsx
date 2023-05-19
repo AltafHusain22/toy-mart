@@ -1,24 +1,34 @@
-import React from "react";
-import { Tab, TabList, Tabs,TabPanel } from "react-tabs";
-import './tabs.css'
+import React, { useEffect, useState } from "react";
+import { Tab, TabList, Tabs, TabPanel } from "react-tabs";
+import "./tabs.css";
+import Racer from "./Racer/Racer";
 
 const CategoryTabs = () => {
+  const [speedies, setSpeedies] = useState([]);
+
+ 
+  useEffect(() => {
+    fetch(`http://localhost:5000/TurboThrillers`)
+      .then((res) => res.json())
+      .then((data) => {
+        setSpeedies(data.products);
+      });
+  }, []);
+
   return (
     <section className="container mx-auto px-5 py-2 lg:px-32 lg:pt-12 md:mb-12">
       <h2 className="font-bold md:text-5xl text-4xl mb-10 text-center mt-10">
         Shop by categor
       </h2>
-
-
       <Tabs forceRenderTabPanel defaultIndex={1}>
-		{/* main tab list */}
+        {/* main tab list */}
         <TabList>
           <Tab>Speedy Racer</Tab>
           <Tab>Turbo Blaze</Tab>
           <Tab>Monster Crusher</Tab>
         </TabList>
 
-		{/* for first tab */}
+        {/* for first tab */}
         <TabPanel>
           <Tabs forceRenderTabPanel>
             <TabList>
@@ -26,34 +36,33 @@ const CategoryTabs = () => {
               <Tab>Turbocharged Thrillers</Tab>
               <Tab>Speed Demon Series</Tab>
             </TabList>
+
             <TabPanel>
-              <p>Husband of Marge; father of Bart, Lisa, and Maggie.</p>
-              <img
-                src="https://upload.wikimedia.org/wikipedia/en/thumb/0/02/Homer_Simpson_2006.png/212px-Homer_Simpson_2006.png"
-                alt="Homer Simpson"
-              />
+              <div className="md:mt-10 mt-5 grid md:grid-cols-3 md:gap-10 gap-4">
+                {speedies.map((racers) => <Racer 
+                
+                key={racers._id}
+                racers={racers}
+                
+                >
+                </Racer>)}
+              </div>
             </TabPanel>
             <TabPanel>
-              <p>Wife of Homer; mother of Bart, Lisa, and Maggie.</p>
-              <img
-                src="https://upload.wikimedia.org/wikipedia/en/thumb/0/0b/Marge_Simpson.png/220px-Marge_Simpson.png"
-                alt="Marge Simpson"
-              />
-            </TabPanel>
-            <TabPanel>
-              <p>
-                Oldest child and only son of Homer and Marge; brother of Lisa
-                and Maggie.
-              </p>
-              <img
-                src="https://upload.wikimedia.org/wikipedia/en/a/aa/Bart_Simpson_200px.png"
-                alt="Bart Simpson"
-              />
+              <div className="md:mt-10 mt-5 grid md:grid-cols-3 md:gap-10 gap-4">
+                {speedies.map((racers) => <Racer 
+                
+                key={racers._id}
+                racers={racers}
+                
+                >
+                </Racer>)}
+              </div>
             </TabPanel>
           </Tabs>
         </TabPanel>
 
-		{/* for 2nd tab */}
+        {/* for 2nd tab */}
         <TabPanel>
           <Tabs forceRenderTabPanel>
             <TabList>
@@ -61,7 +70,7 @@ const CategoryTabs = () => {
               <Tab>Turbo Boosters</Tab>
               <Tab>Firestorm Racers</Tab>
             </TabList>
-       
+
             <TabPanel>
               <p>
                 Mutant cyclops. Captain of the Planet Express Ship. Love
@@ -92,7 +101,7 @@ const CategoryTabs = () => {
           </Tabs>
         </TabPanel>
 
-		{/* for 3nd tab */}
+        {/* for 3nd tab */}
         <TabPanel>
           <Tabs forceRenderTabPanel>
             <TabList>
@@ -100,7 +109,7 @@ const CategoryTabs = () => {
               <Tab>Monster Smashers</Tab>
               <Tab>Beastly Crushers</Tab>
             </TabList>
-       
+
             <TabPanel>
               <p>
                 Mutant cyclops. Captain of the Planet Express Ship. Love
@@ -136,5 +145,3 @@ const CategoryTabs = () => {
 };
 
 export default CategoryTabs;
-
-
