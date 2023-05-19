@@ -1,12 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const FireStrom = ({ fireStrom }) => {
-  const { name, price, picture, rating, details,id } = fireStrom;
+const BeastlyCrushers = ({ beastlyCrusher }) => {
+  const { name, price, picture, rating, details, id} = beastlyCrusher;
+ 
   return (
     <div className="card md:h-4/5 bg-base-100 shadow-xl">
       <figure>
-        <img className="w-full h-100" src={picture} />
+        <img className="w-full h-fit " src={picture} />
       </figure>
       <div className="card-body">
         <h2 className="card-title">{name}</h2>
@@ -24,4 +25,4 @@ const FireStrom = ({ fireStrom }) => {
   );
 };
 
-export default FireStrom;
+export default BeastlyCrushers;

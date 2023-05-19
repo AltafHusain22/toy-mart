@@ -8,6 +8,8 @@ import ExtreamSpeed from "./ExtreamSpeed/ExtreamSpeed";
 import TurbuBooster from "./TurbuBooster/TurbuBooster";
 import FireStrom from "./FireStrom/FireStrom";
 import MegaRoaders from "./MegaRoaders/MegaRoaders";
+import Monster from "./Monster/Monster";
+import BeastlyCrushers from "./BeastlyCrushers/BeastlyCrushers";
 
 const CategoryTabs = () => {
   const [speedies, setSpeedies] = useState([]);
@@ -17,6 +19,8 @@ const CategoryTabs = () => {
   const [turboBoosters, setTurboBooster] = useState([]);
   const [fireStroms, setFireStroms] = useState([]);
   const [megaRoaders, setMegaRoaders] = useState([]);
+  const [monsters, setMonsters] = useState([]);
+  const [beastlyCrushers, setBeastlyCrushers] = useState([]);
 
   useEffect(() => {
     // speedies
@@ -64,6 +68,18 @@ const CategoryTabs = () => {
       .then((data) => {
         setMegaRoaders(data.products);
       });
+    // Monsters toys
+    fetch(`http://localhost:5000/monsterSmashers`)
+      .then((res) => res.json())
+      .then((data) => {
+        setMonsters(data.products);
+      });
+    // BeastlyCrushers
+    fetch(`http://localhost:5000/beastlyCrushers`)
+      .then((res) => res.json())
+      .then((data) => {
+        setBeastlyCrushers(data.products);
+      });
 
   }, []);
 
@@ -93,8 +109,8 @@ const CategoryTabs = () => {
             <TabPanel>
               <div className="md:mt-10 mt-5 grid md:grid-cols-3 md:gap-10 gap-4">
                 {speedies.map((racers) => (
-                  <Racer key={racers._id} racers={racers}></Racer>
-                ))}
+                  <Racer key={racers._id}  racers={racers}></Racer>
+                )) }
               </div>
             </TabPanel>
             {/* turbocharge tab */}
@@ -174,7 +190,7 @@ const CategoryTabs = () => {
               <Tab>Monster Smashers</Tab>
               <Tab>Beastly Crushers</Tab>
             </TabList>
-
+              {/* megaRoaders products */}
             <TabPanel>
                <div className="md:mt-10 mt-5 grid md:grid-cols-3 md:gap-10 gap-4">
                 {megaRoaders.map((megaRoader) => (
@@ -185,22 +201,27 @@ const CategoryTabs = () => {
                 ))}
               </div>
             </TabPanel>
+            {/* monster card products */}
             <TabPanel>
-              <p>
-                A kleptomaniacal, lazy, cigar-smoking, heavy-drinking robot who
-                is Fry's best friend. Built in Tijuana, Mexico, he is the Planet
-                Express Ship's cook.
-              </p>
-              <img
-                src="https://upload.wikimedia.org/wikipedia/en/thumb/a/a6/Bender_Rodriguez.png/220px-Bender_Rodriguez.png"
-                alt="Bender Bending Rodriguez"
-              />
+            <div className="md:mt-10 mt-5 grid md:grid-cols-3 md:gap-10 gap-4">
+                {monsters.map((monster) => (
+                  <Monster
+                    key={monster._id}
+                    monster={monster}
+                  ></Monster>
+                ))}
+              </div>
             </TabPanel>
             <TabPanel>
-              <p>
-                Chinese-Martian intern at Planet Express. Fonfon Ru of Kif
-                Kroker.
-              </p>
+            
+            <div className="md:mt-10 mt-5 grid md:grid-cols-3 md:gap-10 gap-4">
+                {beastlyCrushers.map((beastlyCrusher, index) => (
+                  <BeastlyCrushers
+                    key={beastlyCrusher._id}
+                    beastlyCrusher={beastlyCrusher}
+                  ></BeastlyCrushers>
+                ))}
+              </div>
             </TabPanel>
           </Tabs>
         </TabPanel>
