@@ -12,6 +12,7 @@ import Login from "./pages/Login/Login.jsx";
 import Register from "./pages/Register/Register";
 import AuthProvider from "./context/AuthProvider";
 import SingleToyDetails from "./pages/SingleToyDetails/SingleToyDetails";
+import AuthRequired from "./context/AuthRequired";
 
 const router = createBrowserRouter([
   {
@@ -48,9 +49,13 @@ const router = createBrowserRouter([
       },
       {
         path: "/singleToyDetails/:id",
-        element: <SingleToyDetails></SingleToyDetails>,
-        loader: ({params})=> 	fetch(`http://localhost:5000/singleRacer/${params.id}`)
-        
+        element: (
+          <AuthRequired>
+            <SingleToyDetails></SingleToyDetails>
+          </AuthRequired>
+        ),
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/singleRacer/${params.id}`),
       },
     ],
   },
