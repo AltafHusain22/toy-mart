@@ -49,7 +49,8 @@ const router = createBrowserRouter([
       {
         path: "/singleToyDetails/:id",
         element: <SingleToyDetails></SingleToyDetails>,
-        loader: ({params})=> fetch(``)
+        loader: ({params})=> 	fetch(`http://localhost:5000/singleRacer/${params.id}`)
+        
       },
     ],
   },

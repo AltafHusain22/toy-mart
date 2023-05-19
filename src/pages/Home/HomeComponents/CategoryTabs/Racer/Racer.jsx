@@ -1,10 +1,8 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 
 const Racer = ({ racers }) => {
-  const { name, price, picture, rating, details , id} = racers;
-  console.log(id)
-
+  const { name, price, picture, rating, details ,id} = racers;
   return (
     <div className="card md:h-4/5 bg-base-100 shadow-xl">
       <figure>
