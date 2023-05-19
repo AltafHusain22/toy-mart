@@ -3,10 +3,14 @@ import { Tab, TabList, Tabs, TabPanel } from "react-tabs";
 import "./tabs.css";
 import Racer from "./Racer/Racer";
 import TurboCharge from "./TurboCharge/TurboCharge";
+import SpeedyMoon from "./SpeedyMoon/SpeedyMoon";
+import ExtreamSpeed from "./ExtreamSpeed/ExtreamSpeed";
 
 const CategoryTabs = () => {
   const [speedies, setSpeedies] = useState([]);
   const [turbos, setTurboThrillers] = useState([]);
+  const [SpeedyMoons, setSpeedyMoon] = useState([]);
+  const [extreamSpeeds, setExtreamSpeed] = useState([]);
 
  
   useEffect(() => {
@@ -21,7 +25,25 @@ const CategoryTabs = () => {
       .then((data) => {
         setSpeedies(data.products);
       });
+
+      fetch(`http://localhost:5000/SpeedDemon`)
+      .then((res) => res.json())
+      .then((data) => {
+        setSpeedyMoon(data.products);
+      });
+
+      fetch(`http://localhost:5000/extremeSpeedsters`)
+      .then((res) => res.json())
+      .then((data) => {
+        setExtreamSpeed(data.products);
+      });
+
+
   }, []);
+
+
+
+ 
 
   return (
     <section className="container mx-auto px-5 py-2 lg:px-32 lg:pt-12 md:mb-12">
@@ -45,6 +67,7 @@ const CategoryTabs = () => {
               <Tab>Speed Demon Series</Tab>
             </TabList>
 
+            {/* racer speedy tab */}
             <TabPanel>
               <div className="md:mt-10 mt-5 grid md:grid-cols-3 md:gap-10 gap-4">
                 {speedies.map((racers) => <Racer 
@@ -56,6 +79,7 @@ const CategoryTabs = () => {
                 </Racer>)}
               </div>
             </TabPanel>
+            {/* turbocharge tab */}
             <TabPanel>
               <div className="md:mt-10 mt-5 grid md:grid-cols-3 md:gap-10 gap-4">
                 {turbos.map((turbo) => <TurboCharge 
@@ -65,6 +89,18 @@ const CategoryTabs = () => {
                 
                 >
                 </TurboCharge>)}
+              </div>
+            </TabPanel>
+                  {/* speedyMoon */}
+            <TabPanel>
+              <div className="md:mt-10 mt-5 grid md:grid-cols-3 md:gap-10 gap-4">
+                {SpeedyMoons.map((SpeedyMoonToys) => <SpeedyMoon
+                
+                key={SpeedyMoon._id}
+                SpeedyMoonToys={SpeedyMoonToys}
+                
+                >
+                </SpeedyMoon>)}
               </div>
             </TabPanel>
           </Tabs>
@@ -79,15 +115,17 @@ const CategoryTabs = () => {
               <Tab>Firestorm Racers</Tab>
             </TabList>
 
+            {/* Extreme Speedsters */}
             <TabPanel>
-              <p>
-                Mutant cyclops. Captain of the Planet Express Ship. Love
-                interest of Fry.
-              </p>
-              <img
-                src="https://upload.wikimedia.org/wikipedia/en/thumb/d/d4/Turanga_Leela.png/150px-Turanga_Leela.png"
-                alt="Turanga Leela"
-              />
+              <div className="md:mt-10 mt-5 grid md:grid-cols-3 md:gap-10 gap-4">
+                {extreamSpeeds.map((extreamSpeed) => <ExtreamSpeed
+                
+                key={extreamSpeed._id}
+                extreamSpeed={extreamSpeed}
+                
+                >
+                </ExtreamSpeed>)}
+              </div>
             </TabPanel>
             <TabPanel>
               <p>

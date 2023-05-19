@@ -5,7 +5,7 @@ const TurboCharge = ({turbo}) => {
   return (
     <div className="card md:h-4/5 bg-base-100 shadow-xl">
       <figure>
-        <img className="w-1/2 h-fit" src={picture} />
+        <img className="w-full h-fit" src={picture} />
       </figure>
       <div className="card-body">
         <h2 className="card-title">{name}</h2>
