@@ -28,11 +28,11 @@ const SingleToyDetails = () => {
               <div className=" flex flex-col-reverse gap-5">
                 <div className="flex gap-5">
                   <h2 className="font-bold">User Name:</h2>
-                  <p>{user.displayName}</p>
+                  <p>{user?.displayName}</p>
                 </div>
                 <div className="flex gap-5">
                   <h2 className="font-bold">User Email:</h2>
-                  <p>{user.email}</p>
+                  <p>{user?.email}</p>
                 </div>
               </div>
             </div>

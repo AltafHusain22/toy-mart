@@ -49,11 +49,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/singleToyDetails/:id",
-        element: (
-          <AuthRequired>
-            <SingleToyDetails></SingleToyDetails>
-          </AuthRequired>
-        ),
+        element: <SingleToyDetails></SingleToyDetails>,
         loader: ({ params }) =>
           fetch(`http://localhost:5000/singleRacer/${params.id}`),
       },
