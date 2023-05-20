@@ -145,7 +145,7 @@ const Footer = () => {
 
           <div>
             <p className="text-sm font-semibold tracking-widest text-gray-100 uppercase">
-              Help
+              Contact Info
             </p>
 
             <ul className="mt-6 space-y-4">
@@ -155,8 +155,8 @@ const Footer = () => {
                   title=""
                   className="flex text-base text-gray-100 transition-all duration-200 hover:text-blue-600 focus:text-blue-600"
                 >
-                  {" "}
-                  Customer Support{" "}
+                  
+                  Phone : +880177209090
                 </a>
               </li>
 
@@ -166,32 +166,10 @@ const Footer = () => {
                   title=""
                   className="flex text-base text-gray-100 transition-all duration-200 hover:text-blue-600 focus:text-blue-600"
                 >
-                  {" "}
-                  Delivery Details{" "}
+                  Email : support@gmail.com
                 </a>
               </li>
 
-              <li>
-                <a
-                  href="#"
-                  title=""
-                  className="flex text-base text-gray-100 transition-all duration-200 hover:text-blue-600 focus:text-blue-600"
-                >
-                  {" "}
-                  Terms & Conditions{" "}
-                </a>
-              </li>
-
-              <li>
-                <a
-                  href="#"
-                  title=""
-                  className="flex text-base text-gray-100 transition-all duration-200 hover:text-blue-600 focus:text-blue-600"
-                >
-                  {" "}
-                  Privacy Policy{" "}
-                </a>
-              </li>
             </ul>
           </div>
 
