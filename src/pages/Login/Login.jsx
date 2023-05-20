@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthProvider";
 import Swal from "sweetalert2";
 
@@ -7,20 +7,24 @@ import "sweetalert2/dist/sweetalert2.min.css";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-
-
 const Login = () => {
   const {LoginWithUserAndPass, googleSignUp} = useContext(AuthContext)
   const [error, setError] = useState("");
+  const navigate = useNavigate()
+  const location = useLocation()
+  const from = location.state?.from || null;
+  console.log(from)
+
 
   // handlegoogle signUp
   const handleGoogleSignUp =()=>{
     googleSignUp()
     .then((result) => {
-      
       const credential = GoogleAuthProvider.credentialFromResult(result);
       const token = credential.accessToken;
       const user = result.user;
+      Swal.fire("Good job!", "LoggedIn Successfully !", "success");
+      navigate(from)
      
     }).catch((error) => {
       const errorCode = error.code;
@@ -42,6 +46,7 @@ const Login = () => {
           .then((userCredential) => {
             const user = userCredential.user;
             Swal.fire("Good job!", "LoggedIn Successfully !", "success");
+            navigate(from)
             form.reset();
             
           })

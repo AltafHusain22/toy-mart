@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from "react";
-import { Link, Navigate, useNavigate } from "react-router-dom";
+import { Link, Navigate, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../../../context/AuthProvider";
 import Swal from "sweetalert2";
 import "sweetalert2/dist/sweetalert2.min.css";
@@ -8,12 +8,15 @@ const Racer = ({ racers }) => {
   const { name, price, picture, rating, id } = racers;
   const { user } = useContext(AuthContext);
   const navigate = useNavigate();
+  const location = useLocation()
+  const from = location.state?.from || null;
 
+  console.log(location)
   const handleViewDetails = () => {
-    console.log(user);
     if (!user) {
       Swal.fire("Sorry!", "You have to log in first to view details !", "error");
-      navigate("/login");
+      navigate("/login", { state: { from } });
+       
     } else {
       navigate(`/singleToyDetails/${id}`);
     }
@@ -32,6 +35,7 @@ const Racer = ({ racers }) => {
 
         <button
           onClick={handleViewDetails}
+          
           className="btn btn-primary bg-black text-white mt-5"
         >
           View Details

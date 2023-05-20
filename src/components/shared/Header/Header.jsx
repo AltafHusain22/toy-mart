@@ -1,9 +1,13 @@
 import React, { useContext, useState } from "react";
-import { Link, NavLink, useLocation } from "react-router-dom";
+import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../context/AuthProvider";
 import { FaBars, FaUserCircle } from "react-icons/fa";
 
 const Header = () => {
+  const [showMenu, setShowMenu] = useState(false);
+  const { user, loggedOutUser, loading } = useContext(AuthContext);
+  const location = useLocation();
+  const navigate = useNavigate()
   const menuItems = (
     <>
       <NavLink
@@ -13,6 +17,31 @@ const Header = () => {
       >
         Home
       </NavLink>
+
+      <NavLink
+        activeclassname="active"
+        to="/allToys"
+        className="block font-bold mt-4 lg:inline-block lg:mt-0 text-slate-50  mr-4"
+      >
+        All Toys
+      </NavLink>
+
+      <NavLink
+        activeclassname="active"
+        to="/myToys"
+        className="block font-bold mt-4 lg:inline-block lg:mt-0 text-slate-50  mr-4"
+      >
+        MyToys
+      </NavLink>
+
+      <NavLink
+        activeclassname="active"
+        to="/addToys"
+        className="block font-bold mt-4 lg:inline-block lg:mt-0 text-slate-50  mr-4"
+      >
+        Add Toy 
+      </NavLink>
+
       <NavLink
         activeclassname="active"
         to="/blogs"
@@ -22,9 +51,7 @@ const Header = () => {
       </NavLink>
     </>
   );
-  const [showMenu, setShowMenu] = useState(false);
-  const { user, loggedOutUser, loading } = useContext(AuthContext);
-  const location = useLocation();
+ 
 
   // logout
   const handleLogOut =() => {
@@ -41,7 +68,9 @@ const Header = () => {
     }
 
     loggedOutUser()
-    .then(() => {})
+    .then(() => {
+      navigate('/login')
+    })
     .catch((error) => {
       console.log(error);
     });
