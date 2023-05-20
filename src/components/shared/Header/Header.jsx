@@ -8,51 +8,7 @@ const Header = () => {
   const { user, loggedOutUser, loading } = useContext(AuthContext);
   const location = useLocation();
   const navigate = useNavigate()
-  const menuItems = (
-    <>
-      <NavLink
-        activeclassname="active"
-        to="/"
-        className="block font-bold mt-4 lg:inline-block lg:mt-0 text-slate-50  mr-4"
-      >
-        Home
-      </NavLink>
-
-      <NavLink
-        activeclassname="active"
-        to="/allToys"
-        className="block font-bold mt-4 lg:inline-block lg:mt-0 text-slate-50  mr-4"
-      >
-        All Toys
-      </NavLink>
-
-      <NavLink
-        activeclassname="active"
-        to="/myToys"
-        className="block font-bold mt-4 lg:inline-block lg:mt-0 text-slate-50  mr-4"
-      >
-        MyToys
-      </NavLink>
-
-      <NavLink
-        activeclassname="active"
-        to="/addToys"
-        className="block font-bold mt-4 lg:inline-block lg:mt-0 text-slate-50  mr-4"
-      >
-        Add Toy 
-      </NavLink>
-
-      <NavLink
-        activeclassname="active"
-        to="/blogs"
-        className="block font-bold mt-4 lg:inline-block lg:mt-0 text-slate-50  mr-4"
-      >
-        Blog
-      </NavLink>
-    </>
-  );
  
-
   // logout
   const handleLogOut =() => {
     if (loading) {
@@ -103,7 +59,54 @@ const Header = () => {
           showMenu ? "block" : "hidden"
         }`}
       >
-        <div className="text-lg lg:flex-grow text-center">{menuItems}</div>
+        <div className="text-lg lg:flex-grow text-center">
+
+
+        <NavLink
+        activeclassname="active"
+        to="/"
+        className="block font-bold mt-4 lg:inline-block lg:mt-0 text-slate-50  mr-4"
+      >
+        Home
+      </NavLink>
+
+      <NavLink
+        activeclassname="active"
+        to="/allToys"
+        className="block font-bold mt-4 lg:inline-block lg:mt-0 text-slate-50  mr-4"
+      >
+        All Toys
+      </NavLink>
+
+     {
+      user &&
+  <>
+      <NavLink
+      activeclassname="active"
+      to="/myToys"
+      className="block font-bold mt-4 lg:inline-block lg:mt-0 text-slate-50  mr-4"
+    >
+      MyToys
+    </NavLink>
+
+    <NavLink
+      activeclassname="active"
+      to="/addToys"
+      className="block font-bold mt-4 lg:inline-block lg:mt-0 text-slate-50  mr-4"
+    >
+      Add Toy 
+    </NavLink>
+  </>
+     }
+
+      <NavLink
+        activeclassname="active"
+        to="/blogs"
+        className="block font-bold mt-4 lg:inline-block lg:mt-0 text-slate-50  mr-4"
+      >
+        Blog
+      </NavLink>
+          </div>
 
         {/* check if user is logged in */}
         {user ? (

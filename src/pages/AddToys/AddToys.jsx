@@ -1,11 +1,14 @@
 import React, { useContext, useState } from "react";
 import { Controller, useForm } from "react-hook-form";
 import { AuthContext } from "../../context/AuthProvider";
-import Select from "react-select";
+import CreatableSelect from "react-select/creatable";
+import Swal from "sweetalert2";
+import "sweetalert2/dist/sweetalert2.min.css";
+
 
 const AddToys = () => {
   const { user } = useContext(AuthContext);
-  const [selectedOption, setSelectedOption] = useState(null);
+  const [selectedOption, setSelectedOption] = useState([]);
   const {
     register,
     control,
@@ -25,7 +28,24 @@ const AddToys = () => {
   ];
   
 
-  const onSubmit = (data) => console.log(data);
+	const onSubmit = (data) => {
+		data.category = selectedOption.map((option) => option.value);
+		fetch(`http://localhost:5000/addtoy`,{
+			method: "POST", 
+			headers: {
+				'Content-Type' : 'application/json'
+			},
+			body: JSON.stringify(data)
+			
+		})
+		.then(res=> res.json())
+		.then(data=> {
+			if(data.acknowledged){
+				Swal.fire("Great!", "Added A Toy Successfylly !", "success");
+				form.reset()
+			}
+		})
+	};
 
   return (
     <section className="py-10 bg-gray-100 sm:py-16 lg:py-24 ">
@@ -157,7 +177,7 @@ const AddToys = () => {
                         name="select"
                         control={control}
                         render={({ field }) => (
-							<Select
+							<CreatableSelect
 							defaultValue={selectedOption}
 							onChange={setSelectedOption}
 							options={options}
