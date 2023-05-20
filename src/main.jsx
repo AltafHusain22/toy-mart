@@ -13,6 +13,7 @@ import Register from "./pages/Register/Register";
 import AuthProvider from "./context/AuthProvider";
 import SingleToyDetails from "./pages/SingleToyDetails/SingleToyDetails";
 import AuthRequired from "./context/AuthRequired";
+import UpdateToy from "./pages/UpdateToy/UpdateToy";
 
 const router = createBrowserRouter([
   {
@@ -52,6 +53,12 @@ const router = createBrowserRouter([
         element: <SingleToyDetails></SingleToyDetails>,
         loader: ({ params }) =>
           fetch(`http://localhost:5000/singleRacer/${params.id}`),
+      },
+      {
+        path: "/updateToy/:id",
+        element: <UpdateToy></UpdateToy>,
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/singleToy/${params.id}`),
       },
     ],
   },

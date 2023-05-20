@@ -5,7 +5,6 @@ import "sweetalert2/dist/sweetalert2.min.css";
 
 const MyToys = () => {
   const [toys, setToys] = useState([]);
-  console.log(toys)
   useEffect(() => {
     fetch("http://localhost:5000/alltoys")
       .then((res) => res.json())

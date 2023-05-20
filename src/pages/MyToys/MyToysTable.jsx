@@ -1,13 +1,8 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
-
-const MyToysTable = ({ toy , handleDeleteToy }) => {
+const MyToysTable = ({ toy, handleDeleteToy, handleEditToy }) => {
   const { toyName, image, price, rating, quantity, details, _id } = toy;
-
-  const handleEditToy =(id)=>{
-	console.log('edit', id )
-  }
-
   return (
     <tr>
       <th className="sm:w-auto">
@@ -29,7 +24,11 @@ const MyToysTable = ({ toy , handleDeleteToy }) => {
       <td className="sm:w-auto">{details.slice(1, 50)} ....</td>
 
       <th className="sm:w-auto">
-        <button onClick={()=>handleEditToy(_id)} className="btn btn-ghost ">Edit</button>
+        <Link to={`/updateToy/${_id}`}>
+          <button onClick={() => handleEditToy(_id)} className="btn btn-ghost ">
+            Edit
+          </button>
+        </Link>
         <button onClick={() => handleDeleteToy(_id)} className="btn btn-ghost ">
           Delete
         </button>
