@@ -5,6 +5,7 @@ import Swal from "sweetalert2";
 import "sweetalert2/dist/sweetalert2.min.css";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { updateProfile } from "firebase/auth";
 
 const Register = () => {
   const { createUser,googleSignUp } = useContext(AuthContext);
@@ -39,29 +40,38 @@ const Register = () => {
     const email = form.email.value;
     const password = form.password.value;
     const photoUrl = form.photo.value;
-
-
+  
     // form validation
-    if (password.length < 6) {
-      toast("Password Shouldbe min 6 char !");
+    if (displayName === '' || email === '' || password === '' || photoUrl === '') {
+      toast("You should fill up all the fields!");
       return;
     }
-
-    if ((email, password)) {
-      createUser(email, password, displayName, photoUrl)
-        .then((userCredential) => {
-          const user = userCredential.user;
-          Swal.fire("Good job!", "User Created Successfully !", "success");
-          form.reset();
-          // navigate('/login')
-        })
-        .catch((error) => {
-          const errorCode = error.code;
-          const errorMessage = error.message;
-        });
+    if (password.length < 6) {
+      toast("Password should be at least 6 characters long!");
+      return;
     }
+    createUser(email, password, displayName, photoUrl)
+    .then(async (result) => {
+      const loggedUser = result.user;
+      console.log('displayName before update:', displayName);
+      await updateProfile(loggedUser, {
+        displayName: displayName,
+        photoURL: photoUrl,
+      });
+      console.log('loggedUser after update:', loggedUser);
+      form.reset();
+      navigate('/login');
+    })
+    .catch((error) => {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      console.log('Error:', errorMessage);
+    });
+    // Display SweetAlert2 outside the promise resolution block
+    Swal.fire("Good job!", "User Created Successfully!", "success");
   };
-
+  
+  
   return (
     <section className="bg-white  mt-20">
       <div className="grid grid-cols-1 lg:grid-cols-2">

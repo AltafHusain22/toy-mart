@@ -36,7 +36,7 @@ const CategoryTabs = () => {
   return (
     <section className="container mx-auto px-5 py-2 lg:px-32 lg:pt-12 md:mb-12">
       <h2 className="font-bold md:text-5xl text-4xl mb-10 text-center mt-10">
-        Shop by categor
+        Shop by category
       </h2>
       <Tabs forceRenderTabPanel defaultIndex={1}>
         {/* for first tab */}

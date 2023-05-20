@@ -19,10 +19,20 @@ const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  //   create user for signup
-  const createUser = (email, password) => {
+  // create user for singup
+  const createUser = (email, password, displayName, photoUrl) => {
     setLoading(true);
-    return createUserWithEmailAndPassword(auth, email, password);
+    return createUserWithEmailAndPassword(auth, email, password).then(
+      (userCredential) => {
+        // Set display name and photo URL
+        return updateProfile(auth.currentUser, {
+          displayName,
+          photoUrl,
+        }).then(() => {
+          return userCredential;
+        });
+      }
+    );
   };
 
   // google signUp
@@ -39,23 +49,21 @@ const AuthProvider = ({ children }) => {
   };
 
   // loggedOutUser
-  const loggedOutUser=()=>{
-    return signOut(auth)
-  }
+  const loggedOutUser = () => {
+    return signOut(auth);
+  };
 
   // onauthUser
 
-  useEffect(()=>{
-
-    const unsbscribe = onAuthStateChanged(auth, (user)=>{
-      setUser(user)
-      setLoading(false)
+  useEffect(() => {
+    const unsbscribe = onAuthStateChanged(auth, (user) => {
+      setUser(user);
+      setLoading(false);
     });
-    return ()=>{
-      unsbscribe()
-    }
-  }, [])
-
+    return () => {
+      unsbscribe();
+    };
+  }, []);
 
   const userInfo = {
     user,

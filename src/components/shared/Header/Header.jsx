@@ -6,6 +6,7 @@ import { FaBars, FaUserCircle } from "react-icons/fa";
 const Header = () => {
   const [showMenu, setShowMenu] = useState(false);
   const { user, loggedOutUser, loading } = useContext(AuthContext);
+  console.log(user)
   const location = useLocation();
   const navigate = useNavigate()
  
