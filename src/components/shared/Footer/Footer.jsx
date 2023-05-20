@@ -3,17 +3,13 @@ import React from "react";
 
 const Footer = () => {
   return (
-    <section className="py-10 bg-gray-50 sm:pt-16 lg:pt-24 mt-20 w-full">
+    <section className="py-10 bg-black text-slate-50 sm:pt-16 lg:pt-24 mt-20 w-full">
       <div className="px-4 mx-auto sm:px-6 lg:px-8 max-w-7xl">
         <div className="grid grid-cols-2 md:col-span-3 lg:grid-cols-6 gap-y-16 gap-x-12">
           <div className="col-span-2 md:col-span-3 lg:col-span-2 lg:pr-8">
-            <img
-              className="w-auto "
-            //   src={logo}
-             
-            />
-
-            <p className="text-base leading-relaxed text-gray-600 mt-7">
+           
+            <h2 className="font-bold text-white text-2xl">ToysMart</h2>
+            <p className="text-base leading-relaxed text-gray-100 mt-7">
               Amet minim mollit non deserunt ullamco est sit aliqua dolor do
               amet sint. Velit officia consequat duis enim velit mollit.
             </p>
@@ -96,7 +92,7 @@ const Footer = () => {
           </div>
 
           <div>
-            <p className="text-sm font-semibold tracking-widest text-gray-400 uppercase">
+            <p className="text-sm font-semibold tracking-widest text-gray-100 uppercase">
               Company
             </p>
 
@@ -105,7 +101,7 @@ const Footer = () => {
                 <a
                   href="#"
                   title=""
-                  className="flex text-base text-black transition-all duration-200 hover:text-blue-600 focus:text-blue-600"
+                  className="flex text-base text-gray-100 transition-all duration-200 hover:text-blue-600 focus:text-blue-600"
                 >
                   {" "}
                   About{" "}
@@ -116,7 +112,7 @@ const Footer = () => {
                 <a
                   href="#"
                   title=""
-                  className="flex text-base text-black transition-all duration-200 hover:text-blue-600 focus:text-blue-600"
+                  className="flex text-base text-gray-100 transition-all duration-200 hover:text-blue-600 focus:text-blue-600"
                 >
                   {" "}
                   Features{" "}
@@ -127,7 +123,7 @@ const Footer = () => {
                 <a
                   href="#"
                   title=""
-                  className="flex text-base text-black transition-all duration-200 hover:text-blue-600 focus:text-blue-600"
+                  className="flex text-base text-gray-100 transition-all duration-200 hover:text-blue-600 focus:text-blue-600"
                 >
                   {" "}
                   Works{" "}
@@ -138,7 +134,7 @@ const Footer = () => {
                 <a
                   href="#"
                   title=""
-                  className="flex text-base text-black transition-all duration-200 hover:text-blue-600 focus:text-blue-600"
+                  className="flex text-base text-gray-100 transition-all duration-200 hover:text-blue-600 focus:text-blue-600"
                 >
                   {" "}
                   Career{" "}
@@ -148,7 +144,7 @@ const Footer = () => {
           </div>
 
           <div>
-            <p className="text-sm font-semibold tracking-widest text-gray-400 uppercase">
+            <p className="text-sm font-semibold tracking-widest text-gray-100 uppercase">
               Help
             </p>
 
@@ -157,7 +153,7 @@ const Footer = () => {
                 <a
                   href="#"
                   title=""
-                  className="flex text-base text-black transition-all duration-200 hover:text-blue-600 focus:text-blue-600"
+                  className="flex text-base text-gray-100 transition-all duration-200 hover:text-blue-600 focus:text-blue-600"
                 >
                   {" "}
                   Customer Support{" "}
@@ -168,7 +164,7 @@ const Footer = () => {
                 <a
                   href="#"
                   title=""
-                  className="flex text-base text-black transition-all duration-200 hover:text-blue-600 focus:text-blue-600"
+                  className="flex text-base text-gray-100 transition-all duration-200 hover:text-blue-600 focus:text-blue-600"
                 >
                   {" "}
                   Delivery Details{" "}
@@ -179,7 +175,7 @@ const Footer = () => {
                 <a
                   href="#"
                   title=""
-                  className="flex text-base text-black transition-all duration-200 hover:text-blue-600 focus:text-blue-600"
+                  className="flex text-base text-gray-100 transition-all duration-200 hover:text-blue-600 focus:text-blue-600"
                 >
                   {" "}
                   Terms & Conditions{" "}
@@ -190,7 +186,7 @@ const Footer = () => {
                 <a
                   href="#"
                   title=""
-                  className="flex text-base text-black transition-all duration-200 hover:text-blue-600 focus:text-blue-600"
+                  className="flex text-base text-gray-100 transition-all duration-200 hover:text-blue-600 focus:text-blue-600"
                 >
                   {" "}
                   Privacy Policy{" "}
@@ -200,7 +196,7 @@ const Footer = () => {
           </div>
 
           <div className="col-span-2 md:col-span-1 lg:col-span-2 lg:pl-8">
-            <p className="text-sm font-semibold tracking-widest text-gray-400 uppercase">
+            <p className="text-sm font-semibold tracking-widest text-gray-100 uppercase">
               Subscribe to newsletter
             </p>
 
@@ -214,11 +210,11 @@ const Footer = () => {
                   name="email"
                   id="email"
                   placeholder="Enter your email"
-                  className="block w-full p-4 text-black placeholder-gray-500 transition-all duration-200 bg-white border border-gray-200 rounded-md focus:outline-none focus:border-blue-600 caret-blue-600"
+                  className="block w-full p-4 text-gray-100 placeholder-gray-500 transition-all duration-200 bg-white border border-gray-200 rounded-md focus:outline-none focus:border-blue-600 caret-blue-600"
                 />
                   <button
                 type="submit"
-                className=" text-start py-4 mt-3 font-semibold text-white transition-all duration-200 bg-red-600 rounded-md hover:bg-red-700 focus:bg-red-700 btn btn-wide"
+                className=" text-start py-4 mt-3 font-semibold text-black  transition-all duration-200 bg-slate-100 hover:bg-white rounded-md btn btn-wide"
               >
                 Subscribe
               </button>
@@ -231,7 +227,7 @@ const Footer = () => {
 
         <hr className="mt-16 mb-10 border-gray-200" />
 
-        <p className="text-sm text-center text-gray-600">
+        <p className="text-sm text-center text-gray-100">
           © Copyright 2023, All Rights Reserved by toysMart
         </p>
       </div>
