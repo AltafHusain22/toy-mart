@@ -23,6 +23,8 @@ const AllToys = () => {
       <h2 className="text-xl md:text-4xl font-bold text-center py-10">
         All Toys
       </h2>
+      {/* search a toy by name */}
+      <div></div>
       <div className="overflow-x-auto w-full mt-10 b">
         <table className="table w-full">
           {/* head */}

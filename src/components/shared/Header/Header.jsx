@@ -43,8 +43,8 @@ const Header = () => {
     <nav className="flex items-center justify-between flex-wrap bg-black p-6">
       <div className="flex items-center flex-shrink-0 text-slate-700 mr-6">
         <Link to="/">
-          <span className="font-semibold text-2xl tracking-tight text-white md:ml-[150px]">
-            Toys-mart
+          <span className="md:ml-[150px]">
+            <img className="w-[200px]" src="https://i.ibb.co/hFmhNNn/logo-removebg-preview.png" alt="" />
           </span>
         </Link>
       </div>

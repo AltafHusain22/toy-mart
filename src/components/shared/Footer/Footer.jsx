@@ -1,14 +1,16 @@
 import React from "react";
 
-
 const Footer = () => {
   return (
     <section className="py-10 bg-black text-slate-50 sm:pt-16 lg:pt-24 mt-20 w-full">
       <div className="px-4 mx-auto sm:px-6 lg:px-8 max-w-7xl">
         <div className="grid grid-cols-2 md:col-span-3 lg:grid-cols-6 gap-y-16 gap-x-12">
           <div className="col-span-2 md:col-span-3 lg:col-span-2 lg:pr-8">
-           
-            <h2 className="font-bold text-white text-2xl">ToysMart</h2>
+            <img
+              className="w-[200px]"
+              src="https://i.ibb.co/hFmhNNn/logo-removebg-preview.png"
+              alt=""
+            />
             <p className="text-base leading-relaxed text-gray-100 mt-7">
               Amet minim mollit non deserunt ullamco est sit aliqua dolor do
               amet sint. Velit officia consequat duis enim velit mollit.
@@ -155,7 +157,6 @@ const Footer = () => {
                   title=""
                   className="flex text-base text-gray-100 transition-all duration-200 hover:text-blue-600 focus:text-blue-600"
                 >
-                  
                   Phone : +880177209090
                 </a>
               </li>
@@ -169,7 +170,6 @@ const Footer = () => {
                   Email : support@gmail.com
                 </a>
               </li>
-
             </ul>
           </div>
 
@@ -180,9 +180,7 @@ const Footer = () => {
 
             <form className="mt-6">
               <div>
-                <label className="sr-only">
-                  Email
-                </label>
+                <label className="sr-only">Email</label>
                 <input
                   type="email"
                   name="email"
@@ -190,15 +188,13 @@ const Footer = () => {
                   placeholder="Enter your email"
                   className="block w-full p-4 text-gray-100 placeholder-gray-500 transition-all duration-200 bg-white border border-gray-200 rounded-md focus:outline-none focus:border-blue-600 caret-blue-600"
                 />
-                  <button
-                type="submit"
-                className=" text-start py-4 mt-3 font-semibold text-black  transition-all duration-200 bg-slate-100 hover:bg-white rounded-md btn btn-wide"
-              >
-                Subscribe
-              </button>
+                <button
+                  type="submit"
+                  className=" text-start py-4 mt-3 font-semibold text-black  transition-all duration-200 bg-slate-100 hover:bg-white rounded-md btn btn-wide"
+                >
+                  Subscribe
+                </button>
               </div>
-
-            
             </form>
           </div>
         </div>
