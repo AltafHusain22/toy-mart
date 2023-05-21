@@ -24,7 +24,7 @@ const UpdateToy = () => {
   });
 
   const onSubmit = (data) => {
-    fetch(`https://toys-server-altafhusain22.vercel.appeditToy/${_id}`, {
+    fetch(`http://localhost:5000/editToy/${_id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",

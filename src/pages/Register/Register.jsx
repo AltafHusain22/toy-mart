@@ -6,35 +6,30 @@ import "sweetalert2/dist/sweetalert2.min.css";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { updateProfile } from "firebase/auth";
+import { GoogleAuthProvider } from "firebase/auth";
 import useTitle from "../../hooks/useTitle";
 
 const Register = () => {
-  useTitle('Register')
-  const { createUser,googleSignUp } = useContext(AuthContext);
+  useTitle("Register");
+  const { createUser, googleSignUp } = useContext(AuthContext);
   const [error, setError] = useState("");
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
-  // handlegoogle signUp
-  const handleGoogleSignUp =()=>{
-      googleSignUp()
+  const handleGoogleSignUp = () => {
+    googleSignUp()
       .then((result) => {
-        
         const credential = GoogleAuthProvider.credentialFromResult(result);
         const token = credential.accessToken;
         const user = result.user;
-        navigate('/login')
-       
-      }).catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        const email = error.customData.email;
+        navigate("/login");
+      })
+      .catch((error) => {
+        const { code, message, customData } = error;
+        const email = customData.email;
         const credential = GoogleAuthProvider.credentialFromError(error);
-       
       });
-  }
+  };
 
-  
-  // handleregister form
   const handleRegister = (event) => {
     event.preventDefault();
     const form = event.target;
@@ -42,9 +37,8 @@ const Register = () => {
     const email = form.email.value;
     const password = form.password.value;
     const photoUrl = form.photo.value;
-  
-    // form validation
-    if (displayName === '' || email === '' || password === '' || photoUrl === '') {
+
+    if (displayName === "" || email === "" || password === "" || photoUrl === "") {
       toast("You should fill up all the fields!");
       return;
     }
@@ -52,28 +46,29 @@ const Register = () => {
       toast("Password should be at least 6 characters long!");
       return;
     }
+
     createUser(email, password, displayName, photoUrl)
-    .then(async (result) => {
-      const loggedUser = result.user;
-      console.log('displayName before update:', displayName);
-      await updateProfile(loggedUser, {
-        displayName: displayName,
-        photoURL: photoUrl,
+      .then((result) => {
+        const loggedUser = result.user;
+        return updateProfile(loggedUser, {
+          displayName: displayName,
+          photoURL: photoUrl,
+        }).then(() => {
+          console.log("Profile updated successfully");
+          console.log(loggedUser);
+          form.reset();
+        });
+      })
+      .catch((error) => {
+        console.error("Error creating user:", error.message);
+        toast.error(error.message);
       });
-      console.log('loggedUser after update:', loggedUser);
-      form.reset();
-      navigate('/login');
-    })
-    .catch((error) => {
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      console.log('Error:', errorMessage);
-    });
-    // Display SweetAlert2 outside the promise resolution block
+
     Swal.fire("Good job!", "User Created Successfully!", "success");
   };
-  
-  
+
+
+
   return (
     <section className="bg-white  mt-20">
       <div className="grid grid-cols-1 lg:grid-cols-2">
@@ -177,7 +172,7 @@ const Register = () => {
 
         <div className="flex items-center justify-center px-4 py-10 bg-white sm:px-6 lg:px-8 sm:py-16 lg:py-24">
           <div className="xl:w-full xl:max-w-sm 2xl:max-w-md xl:mx-auto">
-          <ToastContainer/>
+            <ToastContainer />
             <h2 className="text-3xl font-bold leading-tight text-black sm:text-4xl">
               Sign up to Celebration
             </h2>
@@ -191,7 +186,6 @@ const Register = () => {
                 Login
               </Link>
               {/* <p className="font-bold text-xl ">{error}</p> */}
-    
             </p>
 
             <form onSubmit={handleRegister} className="mt-8">
@@ -333,7 +327,8 @@ const Register = () => {
             </form>
 
             <div className="mt-3 space-y-3">
-              <button onClick={handleGoogleSignUp}
+              <button
+                onClick={handleGoogleSignUp}
                 type="button"
                 className="relative inline-flex items-center justify-center w-full px-4 py-4 text-base font-semibold text-gray-700 transition-all duration-200 bg-white border-2 border-gray-200 rounded-md hover:bg-gray-100 focus:bg-gray-100 hover:text-black focus:text-black focus:outline-none"
               >

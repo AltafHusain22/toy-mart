@@ -30,7 +30,7 @@ const AddToys = () => {
 
   const onSubmit = (data) => {
     data.category = selectedOption.map((option) => option.value);
-    fetch(`https://toys-server-altafhusain22.vercel.appaddtoy`, {
+    fetch(`http://localhost:5000/addtoy`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

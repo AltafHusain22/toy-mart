@@ -20,7 +20,7 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <MainLayOut></MainLayOut>,
-    // errorElement: <Error></Error>,
+    errorElement: <Error></Error>,
     children: [
       {
         path: "/",
@@ -41,6 +41,7 @@ const router = createBrowserRouter([
             <MyToys></MyToys>
           </AuthRequired>
         ),
+        loader: () => fetch(`http://localhost:5000/alltoys`)
       },
       {
         path: "/allToys",

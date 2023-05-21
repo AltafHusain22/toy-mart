@@ -7,26 +7,18 @@ import { AuthContext } from "../../context/AuthProvider";
 import useTitle from "../../hooks/useTitle";
 
 const MyToys = () => {
+  
   useTitle('My Toys')
   const {user} = useContext(AuthContext)
   const [toys, setToys] = useState([]);
-  const navigate = useNavigate();
+ 
   useEffect(() => {
-    fetch(`http://localhost:5000/alltoys`, {
-      method: "GET",
-      headers: {
-        authorization: `bearar ${localStorage.getItem("myToys-Token")}`,
-      },
-    })
+    fetch(`http://localhost:5000/alltoys`)
       .then((res) => res.json())
       .then((data) => {
-        if (!data.error) {
-          setToys(data);
-        } else {
-          navigate("/");
-        }
+        setToys(data)
       });
-  }, [navigate]);
+  }, []);
 
   const handleDeleteToy = (id) => {
     Swal.fire({

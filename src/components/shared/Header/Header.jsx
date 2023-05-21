@@ -116,7 +116,7 @@ const Header = () => {
             <div className="avatar mr-4">
               <div className="w-10 rounded-full ring ring-danger ring-offset-base-100 ring-offset-2">
                 <div>
-                  {user.photoURL && (
+                  {user && (
                     <img
                       className="tooltip hover:tooltip-visible"
                       src={user.photoURL}

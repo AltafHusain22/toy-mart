@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { Link, json, useLocation, useNavigate } from "react-router-dom";
+import { Link,useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthProvider";
 import Swal from "sweetalert2";
 import "sweetalert2/dist/sweetalert2.min.css";
@@ -11,9 +11,9 @@ const Login = () => {
   useTitle('Login')
   const { LoginWithUserAndPass, googleSignUp } = useContext(AuthContext);
   const [error, setError] = useState("");
-  const navigate = useNavigate();
-  const location = useLocation();
-  const from = location.state?.from?.pathname || "/";
+    const navigate = useNavigate();
+    const location = useLocation();
+    const from = location?.state?.from?.pathname || '/'
 
   // handlegoogle signUp
   const handleGoogleSignUp = () => {
@@ -23,7 +23,7 @@ const Login = () => {
         const token = credential.accessToken;
         const user = result.user;
         Swal.fire("Good job!", "LoggedIn Successfully !", "success");
-        navigate(from, { replace: true });
+        navigate(from,{replace:true})
       })
       .catch((error) => {
         const errorCode = error.code;
@@ -43,24 +43,8 @@ const Login = () => {
       LoginWithUserAndPass(email, password)
         .then((result) => {
           const user = result.user;
-          const loggedUser = {
-            email: user.email,
-          };
-          console.log(loggedUser);
-          fetch(`https://toys-server-altafhusain22.vercel.appjwt`, {
-            method: "POST",
-            headers: {
-              "content-type": "application/json",
-            },
-            body: JSON.stringify(loggedUser),
-          })
-            .then((res) => res.json())
-            .then((data) => {
-              localStorage.setItem("myToys-Token", data.token);
-              navigate(from, { replace: true });
-            });
-
           Swal.fire("Good job!", "LoggedIn Successfully !", "success");
+          navigate(from,{replace:true})
         })
         .catch((error) => {
           const errorCode = error.code;
