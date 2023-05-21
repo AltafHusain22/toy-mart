@@ -15,12 +15,13 @@ import SingleToyDetails from "./pages/SingleToyDetails/SingleToyDetails";
 import AuthRequired from "./context/AuthRequired";
 import UpdateToy from "./pages/UpdateToy/UpdateToy";
 import Error from "./components/404/Error";
+import SingleToy from "./pages/SingleToy/SingleToy";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <MainLayOut></MainLayOut>,
-    errorElement: <Error></Error>,
+    // errorElement: <Error></Error>,
     children: [
       {
         path: "/",
@@ -69,6 +70,16 @@ const router = createBrowserRouter([
         ),
         loader: ({ params }) =>
           fetch(`http://localhost:5000/singleRacer/${params.id}`),
+      },
+      {
+        path: "/singleToy/:id",
+        element: (
+          <AuthRequired>
+            <SingleToy></SingleToy>
+          </AuthRequired>
+        ),
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/singleToy/${params.id}`),
       },
       {
         path: "/updateToy/:id",
