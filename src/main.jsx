@@ -14,11 +14,13 @@ import AuthProvider from "./context/AuthProvider";
 import SingleToyDetails from "./pages/SingleToyDetails/SingleToyDetails";
 import AuthRequired from "./context/AuthRequired";
 import UpdateToy from "./pages/UpdateToy/UpdateToy";
+import Error from "./components/404/Error";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <MainLayOut></MainLayOut>,
+    // errorElement: <Error></Error>,
     children: [
       {
         path: "/",
@@ -26,15 +28,24 @@ const router = createBrowserRouter([
       },
       {
         path: "/addToys",
-        element: <AuthRequired><AddToys></AddToys></AuthRequired>,
+        element: (
+          <AuthRequired>
+            <AddToys></AddToys>
+          </AuthRequired>
+        ),
       },
       {
         path: "/myToys",
-        element: <AuthRequired><MyToys></MyToys></AuthRequired>,
+        element: (
+          <AuthRequired>
+            <MyToys></MyToys>
+          </AuthRequired>
+        ),
       },
       {
         path: "/allToys",
-        element: <AllToys></AllToys>
+        element: <AllToys></AllToys>,
+        loader: () => fetch("http://localhost:5000/alltoys"),
       },
       {
         path: "/blogs",
@@ -50,13 +61,21 @@ const router = createBrowserRouter([
       },
       {
         path: "/singleToyDetails/:id",
-        element: <SingleToyDetails></SingleToyDetails>,
+        element: (
+          <AuthRequired>
+            <SingleToyDetails></SingleToyDetails>
+          </AuthRequired>
+        ),
         loader: ({ params }) =>
           fetch(`http://localhost:5000/singleRacer/${params.id}`),
       },
       {
         path: "/updateToy/:id",
-        element: <UpdateToy></UpdateToy>,
+        element: (
+          <AuthRequired>
+            <UpdateToy></UpdateToy>
+          </AuthRequired>
+        ),
         loader: ({ params }) =>
           fetch(`http://localhost:5000/singleToy/${params.id}`),
       },

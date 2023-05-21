@@ -1,9 +1,20 @@
 import React from 'react';
+import { useLoaderData } from 'react-router-dom';
+import AllToysCard from './AllToysCard';
 
 const AllToys = () => {
+	const allToys = useLoaderData()
+	
+	
 	return (
-		<div>
-			<h2>All toys coming soon ............</h2>
+		<div className='grid md:grid-cols-3 gap-5 mt-10 mx-3 md:mx-10 '>
+			{
+				allToys.map(toy=> <AllToysCard
+				key={toy._id}
+				toy={toy}
+				
+				></AllToysCard>)
+			}
 		</div>
 	);
 };

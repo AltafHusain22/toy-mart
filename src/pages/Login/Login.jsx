@@ -1,39 +1,35 @@
 import React, { useContext, useState } from "react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, json, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthProvider";
 import Swal from "sweetalert2";
-
 import "sweetalert2/dist/sweetalert2.min.css";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const Login = () => {
-  const {LoginWithUserAndPass, googleSignUp} = useContext(AuthContext)
+  const { LoginWithUserAndPass, googleSignUp } = useContext(AuthContext);
   const [error, setError] = useState("");
-  const navigate = useNavigate()
-  const location = useLocation()
-  const from = location.state?.from || null;
-  console.log(from)
-
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
 
   // handlegoogle signUp
-  const handleGoogleSignUp =()=>{
+  const handleGoogleSignUp = () => {
     googleSignUp()
-    .then((result) => {
-      const credential = GoogleAuthProvider.credentialFromResult(result);
-      const token = credential.accessToken;
-      const user = result.user;
-      Swal.fire("Good job!", "LoggedIn Successfully !", "success");
-      navigate(from)
-     
-    }).catch((error) => {
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      const email = error.customData.email;
-      const credential = GoogleAuthProvider.credentialFromError(error);
-     
-    });
-}
+      .then((result) => {
+        const credential = GoogleAuthProvider.credentialFromResult(result);
+        const token = credential.accessToken;
+        const user = result.user;
+        Swal.fire("Good job!", "LoggedIn Successfully !", "success");
+        navigate(from, { replace: true });
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        const email = error.customData.email;
+        const credential = GoogleAuthProvider.credentialFromError(error);
+      });
+  };
 
   const handleLogin = (event) => {
     event.preventDefault();
@@ -41,22 +37,35 @@ const Login = () => {
     const email = form.email.value;
     const password = form.password.value;
 
-      if(email, password){
-          LoginWithUserAndPass(email,password)
-          .then((userCredential) => {
-            const user = userCredential.user;
-            Swal.fire("Good job!", "LoggedIn Successfully !", "success");
-            navigate(from)
-            form.reset();
-            
+    if ((email, password)) {
+      LoginWithUserAndPass(email, password)
+        .then((result) => {
+          const user = result.user;
+          const loggedUser = {
+            email: user.email,
+          };
+          console.log(loggedUser);
+          fetch(`https://toys-server-altafhusain22.vercel.appjwt`, {
+            method: "POST",
+            headers: {
+              "content-type": "application/json",
+            },
+            body: JSON.stringify(loggedUser),
           })
-          .catch((error) => {
-            const errorCode = error.code;
-            const errorMessage = error.message;
-            setError(errorMessage)
-          });
+            .then((res) => res.json())
+            .then((data) => {
+              localStorage.setItem("myToys-Token", data.token);
+              navigate(from, { replace: true });
+            });
 
-      }
+          Swal.fire("Good job!", "LoggedIn Successfully !", "success");
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          toast(errorMessage);
+        });
+    }
   };
 
   return (
@@ -158,7 +167,7 @@ const Login = () => {
             </div>
           </div>
         </div>
-        
+
         <div className="flex items-center justify-center px-4 py-10 bg-white sm:px-6 lg:px-8 sm:py-16 lg:py-24">
           <div className="xl:w-full xl:max-w-sm 2xl:max-w-md xl:mx-auto">
             {error}
@@ -208,7 +217,6 @@ const Login = () => {
                     />
                   </div>
                 </div>
-            
 
                 <div>
                   <div className="flex items-center justify-between">
@@ -283,7 +291,7 @@ const Login = () => {
                 Sign in with Google
               </button>
 
-              <button 
+              <button
                 type="button"
                 className="relative inline-flex items-center justify-center w-full px-4 py-4 text-base font-semibold text-gray-700 transition-all duration-200 bg-white border-2 border-gray-200 rounded-md hover:bg-gray-100 focus:bg-gray-100 hover:text-black focus:text-black focus:outline-none"
               >

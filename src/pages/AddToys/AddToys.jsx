@@ -5,7 +5,6 @@ import CreatableSelect from "react-select/creatable";
 import Swal from "sweetalert2";
 import "sweetalert2/dist/sweetalert2.min.css";
 
-
 const AddToys = () => {
   const { user } = useContext(AuthContext);
   const [selectedOption, setSelectedOption] = useState([]);
@@ -16,36 +15,34 @@ const AddToys = () => {
     formState: { errors },
   } = useForm({
     defaultValues: {
-      firstName: '',
+      firstName: "",
       select: {},
     },
   });
 
   const options = [
-	{ value: 'Super Racer', label: 'Super Racer' },
-	{ value: 'Turbo Speedster', label: 'Turbo Speedster' },
-	{ value: 'Nitro Blaze', label: 'Nitro Blaze' },
+    { value: "Super Racer", label: "Super Racer" },
+    { value: "Turbo Speedster", label: "Turbo Speedster" },
+    { value: "Nitro Blaze", label: "Nitro Blaze" },
   ];
-  
 
-	const onSubmit = (data) => {
-		data.category = selectedOption.map((option) => option.value);
-		fetch(`http://localhost:5000/addtoy`,{
-			method: "POST", 
-			headers: {
-				'Content-Type' : 'application/json'
-			},
-			body: JSON.stringify(data)
-			
-		})
-		.then(res=> res.json())
-		.then(data=> {
-			if(data.acknowledged){
-				Swal.fire("Great!", "Added A Toy Successfylly !", "success");
-				form.reset()
-			}
-		})
-	};
+  const onSubmit = (data) => {
+    data.category = selectedOption.map((option) => option.value);
+    fetch(`https://toys-server-altafhusain22.vercel.appaddtoy`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.acknowledged) {
+          Swal.fire("Great!", "Added A Toy Successfylly !", "success");
+          form.reset();
+        }
+      });
+  };
 
   return (
     <section className="py-10 bg-gray-100 sm:py-16 lg:py-24 ">
@@ -173,16 +170,16 @@ const AddToys = () => {
                     </label>
                     <div className="mt-2.5 relative w-full">
                       <Controller
-					  className="block w-full px-4 py-4 text-black "
+                        className="block w-full px-4 py-4 text-black "
                         name="select"
                         control={control}
                         render={({ field }) => (
-							<CreatableSelect
-							defaultValue={selectedOption}
-							onChange={setSelectedOption}
-							options={options}
-							isMulti
-						  />
+                          <CreatableSelect
+                            defaultValue={selectedOption}
+                            onChange={setSelectedOption}
+                            options={options}
+                            isMulti
+                          />
                         )}
                       />
                     </div>

@@ -4,7 +4,9 @@ import { Navigate, useLocation } from "react-router-dom";
 
 const AuthRequired = ({ children }) => {
   const { user, loading } = useContext(AuthContext);
-  const navigate = useLocation()
+  const location = useLocation()
+ 
+
   if (loading) {
     return (
       <div className="mt-20 flex justify-center">
@@ -15,9 +17,9 @@ const AuthRequired = ({ children }) => {
 
   if(user){
 	return children
-  }else{
-	return <Navigate to={'/login'} state={{from:localStorage}} replace></Navigate>
   }
+	return <Navigate to={'/login'} state={{from:location}} replace></Navigate>
+  
   
 };
 

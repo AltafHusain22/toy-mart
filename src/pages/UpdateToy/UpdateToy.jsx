@@ -22,7 +22,7 @@ const UpdateToy = () => {
   });
 
   const onSubmit = (data) => {
-    fetch(`http://localhost:5000/editToy/${_id}`, {
+    fetch(`https://toys-server-altafhusain22.vercel.appeditToy/${_id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -33,10 +33,11 @@ const UpdateToy = () => {
       .then((data) => {
         console.log(data);
         if (data.modifiedCount > 0) {
-          Swal.fire("Great!", "Updated Toy Successfully!", "success")
-            .then(() => {
+          Swal.fire("Great!", "Updated Toy Successfully!", "success").then(
+            () => {
               reset(); // Reset the form after success message
-            });
+            }
+          );
         }
       });
   };
@@ -135,7 +136,7 @@ const UpdateToy = () => {
                     <label className="text-base font-medium text-gray-900">
                       Update Category
                     </label>
-					<div className="mt-2.5 relative w-full">
+                    <div className="mt-2.5 relative w-full">
                       <input
                         {...register("category", { required: true })}
                         type="text"
@@ -166,7 +167,7 @@ const UpdateToy = () => {
                       type="submit"
                       className="inline-flex items-center justify-center w-full px-4 py-4 mt-2 text-base font-semibold text-white transition-all duration-200 bg-black border border-transparent rounded-md focus:outline-none hover:bg-slate-700 focus:bg-slate-700"
                     >
-                     Update Toy Details
+                      Update Toy Details
                     </button>
                   </div>
                 </div>

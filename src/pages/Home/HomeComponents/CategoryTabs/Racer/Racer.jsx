@@ -7,19 +7,16 @@ import "sweetalert2/dist/sweetalert2.min.css";
 const Racer = ({ racers }) => {
   const { name, price, picture, rating, id } = racers;
   const { user } = useContext(AuthContext);
-  const navigate = useNavigate();
   const location = useLocation()
-  const from = location.state?.from || null;
+  const from = location.state?.from?.pathname || "/";
 
-  console.log(location)
   const handleViewDetails = () => {
     if (!user) {
       Swal.fire("Sorry!", "You have to log in first to view details !", "error");
-      navigate("/login", { state: { from } });
-       
-    } else {
-      navigate(`/singleToyDetails/${id}`);
+      return <Navigate  state={{from:location}} replace></Navigate>;
+      
     }
+   
   };
   return (
     <div className="card md:h-4/5 bg-base-100 shadow-xl">
@@ -33,13 +30,13 @@ const Racer = ({ racers }) => {
           <p className="mt-3 font-bold">Price: ${price}</p>
         </div>
 
-        <button
+        <Link to={`/singleToyDetails/${id}`}
           onClick={handleViewDetails}
           
           className="btn btn-primary bg-black text-white mt-5"
         >
           View Details
-        </button>
+        </Link>
       </div>
     </div>
   );

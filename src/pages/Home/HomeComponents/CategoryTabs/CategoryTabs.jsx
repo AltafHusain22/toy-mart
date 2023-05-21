@@ -4,6 +4,9 @@ import "./tabs.css";
 import Racer from "./Racer/Racer";
 import TurboCharge from "./TurboCharge/TurboCharge";
 import SpeedyMoon from "./SpeedyMoon/SpeedyMoon";
+import Aos from "aos";
+import "aos/dist/aos.css";
+
 
 const CategoryTabs = () => {
   const [speedies, setSpeedies] = useState([]);
@@ -31,10 +34,19 @@ const CategoryTabs = () => {
       .then((data) => {
         setSpeedyMoon(data.products);
       });
+
+
+      Aos.init({
+        duration: 1900,
+      })
+
+
   }, []);
 
+
+
   return (
-    <section className="container mx-auto px-5 py-2 lg:px-32 lg:pt-12 md:mb-12">
+    <section data-aos="fade-right" className="container mx-auto px-5 py-2 lg:px-32 lg:pt-12 md:mb-12">
       <h2 className="font-bold md:text-5xl text-4xl mb-10 text-center mt-10">
         Shop by category
       </h2>

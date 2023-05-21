@@ -27,6 +27,7 @@ const Header = () => {
     loggedOutUser()
     .then(() => {
       navigate('/login')
+      localStorage.removeItem('myToys-Token')
     })
     .catch((error) => {
       console.log(error);

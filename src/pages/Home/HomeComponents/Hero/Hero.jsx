@@ -1,17 +1,27 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
+import Aos from "aos";
+import "aos/dist/aos.css";
 
 const Hero = () => {
+
+  useEffect(()=>{
+
+    Aos.init({
+      duration: 1200,
+    })
+
+  }, [])
   return (
     <div className="">
       <section className="relative py-12 overflow-hidden bg-black sm:pb-16 lg:pb-20 xl:pb-24">
         <div className="px-4 mx-auto relativea sm:px-6 lg:px-8 max-w-7xl">
           <div className="grid items-center grid-cols-1 gap-y-12 lg:grid-cols-2 gap-x-16">
             <div>
-              <h1 className="text-4xl font-normal text-white sm:text-5xl lg:text-6xl xl:text-7xl">
+              <h1  data-aos="fade-right" className="text-4xl font-normal text-white sm:text-5xl lg:text-6xl xl:text-7xl">
                 Here your Best Quality Toys
               </h1>
-              <p className="mt-4 text-lg font-normal text-gray-400 sm:mt-8">
+              <p data-aos="zoom-in-right" className="mt-4 text-lg font-normal text-gray-400 sm:mt-8">
                 Amet minim mollit non deserunt ullamco est sit aliqua dolor do
                 amet sint. Velit officia consequat duis enim velit mollit.
                 Exercitation veniam consequat.
@@ -146,7 +156,7 @@ const Hero = () => {
                 />
               </div>
 
-              <img
+              <img data-aos="fade-left"
                 className="relative w-full  mx-auto"
                 src="https://i.ibb.co/F47XBZ8/pexels-inline-media-5229524-removebg-preview.png"
                 alt=""
