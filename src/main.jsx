@@ -21,7 +21,7 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <MainLayOut></MainLayOut>,
-    // errorElement: <Error></Error>,
+    errorElement: <Error></Error>,
     children: [
       {
         path: "/",
@@ -42,12 +42,14 @@ const router = createBrowserRouter([
             <MyToys></MyToys>
           </AuthRequired>
         ),
-        loader: () => fetch(`http://localhost:5000/alltoys`)
+        loader: () =>
+          fetch(`https://toys-server-altafhusain22.vercel.app/alltoys`),
       },
       {
         path: "/allToys",
         element: <AllToys></AllToys>,
-        loader: () => fetch("http://localhost:5000/alltoys"),
+        loader: () =>
+          fetch("https://toys-server-altafhusain22.vercel.app/alltoys"),
       },
       {
         path: "/blogs",
@@ -69,7 +71,9 @@ const router = createBrowserRouter([
           </AuthRequired>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/singleRacer/${params.id}`),
+          fetch(
+            `https://toys-server-altafhusain22.vercel.app/singleRacer/${params.id}`
+          ),
       },
       {
         path: "/singleToy/:id",
@@ -79,7 +83,9 @@ const router = createBrowserRouter([
           </AuthRequired>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/singleToy/${params.id}`),
+          fetch(
+            `https://toys-server-altafhusain22.vercel.app/singleToy/${params.id}`
+          ),
       },
       {
         path: "/updateToy/:id",
@@ -89,7 +95,9 @@ const router = createBrowserRouter([
           </AuthRequired>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/singleToy/${params.id}`),
+          fetch(
+            `https://toys-server-altafhusain22.vercel.app/singleToy/${params.id}`
+          ),
       },
     ],
   },

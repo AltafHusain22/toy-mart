@@ -6,12 +6,12 @@ import AllToysTable from "./AllToysTable";
 const AllToys = () => {
   useTitle("All Toys");
   const [limit, setLimit] = useState(20);
-  const [searchTerm, setSearchTerm] = useState('');
+  const [searchTerm, setSearchTerm] = useState("");
   const [filteredToys, setFilteredToys] = useState([]);
   const [toys, setToys] = useState([]);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/alltoys`)
+    fetch(`https://toys-server-altafhusain22.vercel.app/alltoys`)
       .then((res) => res.json())
       .then((data) => {
         setToys(data);
@@ -20,7 +20,7 @@ const AllToys = () => {
 
   useEffect(() => {
     const updatedFilteredToys = toys.filter((toy) => {
-      const name = toy.toyName || '';
+      const name = toy.toyName || "";
       return name.toLowerCase().includes(searchTerm.toLowerCase());
     });
     setFilteredToys(updatedFilteredToys);
@@ -67,13 +67,13 @@ const AllToys = () => {
         <table className="table w-full">
           <thead>
             <tr className="text-center">
-              <th>Image</th>
+              <th></th>
               <th>Seller</th>
               <th>Toy Name</th>
               <th>Sub Category</th>
               <th>Price</th>
               <th>Quantity</th>
-              <th></th>
+              <th>Action</th>
             </tr>
           </thead>
           <tbody>

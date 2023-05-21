@@ -7,16 +7,15 @@ import { AuthContext } from "../../context/AuthProvider";
 import useTitle from "../../hooks/useTitle";
 
 const MyToys = () => {
-  
-  useTitle('My Toys')
-  const {user} = useContext(AuthContext)
+  useTitle("My Toys");
+  const { user } = useContext(AuthContext);
   const [toys, setToys] = useState([]);
- 
+
   useEffect(() => {
-    fetch(`http://localhost:5000/alltoys`)
+    fetch(`https://toys-server-altafhusain22.vercel.app/alltoys`)
       .then((res) => res.json())
       .then((data) => {
-        setToys(data)
+        setToys(data);
       });
   }, []);
 
@@ -30,7 +29,7 @@ const MyToys = () => {
       cancelButtonColor: "#d33",
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
-      fetch(`http://localhost:5000/deleteToy/${id}`, {
+      fetch(`https://toys-server-altafhusain22.vercel.app/deleteToy/${id}`, {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",

@@ -2,7 +2,7 @@ import React from "react";
 import { Link, Router } from "react-router-dom";
 
 const AllToysTable = ({ toy }) => {
-  const { toyName, rating, quantity, _id, sellerName, category } = toy;
+  const { toyName, rating, quantity, _id, sellerName, category ,price } = toy;
 
   return (
     <tr>
@@ -14,8 +14,8 @@ const AllToysTable = ({ toy }) => {
 
       <td className="sm:w-auto">{sellerName}</td>
       <td className="sm:w-auto">{toyName}</td>
-      <td className="sm:w-auto">{rating}</td>
       <td className="sm:w-auto">{category}</td>
+      <td className="sm:w-auto">{price}</td>
       <td className="sm:w-auto">{quantity}</td>
       <th className="sm:w-auto">
         <Link to={`/singleToy/${_id}`}>

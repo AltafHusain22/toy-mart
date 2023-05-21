@@ -5,7 +5,7 @@ import "sweetalert2/dist/sweetalert2.min.css";
 import useTitle from "../../hooks/useTitle";
 
 const UpdateToy = () => {
-  useTitle('Update Toy')
+  useTitle("Update Toy");
   const loadedData = useLoaderData();
   const { toyName, image, price, rating, quantity, details, _id, category } =
     loadedData;
@@ -24,7 +24,7 @@ const UpdateToy = () => {
   });
 
   const onSubmit = (data) => {
-    fetch(`http://localhost:5000/editToy/${_id}`, {
+    fetch(`https://toys-server-altafhusain22.vercel.app/editToy/${_id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",

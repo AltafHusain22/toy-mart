@@ -7,7 +7,6 @@ import SpeedyMoon from "./SpeedyMoon/SpeedyMoon";
 import Aos from "aos";
 import "aos/dist/aos.css";
 
-
 const CategoryTabs = () => {
   const [speedies, setSpeedies] = useState([]);
   const [turbos, setTurboThrillers] = useState([]);
@@ -15,13 +14,13 @@ const CategoryTabs = () => {
 
   useEffect(() => {
     // speedies
-    fetch(`http://localhost:5000/TurboThrillers`)
+    fetch(`https://toys-server-altafhusain22.vercel.app/TurboThrillers`)
       .then((res) => res.json())
       .then((data) => {
         setTurboThrillers(data.products);
       });
     // turbos
-    fetch(`http://localhost:5000/racerSpeedy`)
+    fetch(`https://toys-server-altafhusain22.vercel.app/racerSpeedy`)
       .then((res) => res.json())
       .then((data) => {
         setSpeedies(data.products);
@@ -29,24 +28,22 @@ const CategoryTabs = () => {
 
     // speedymons
 
-    fetch(`http://localhost:5000/SpeedDemon`)
+    fetch(`https://toys-server-altafhusain22.vercel.app/SpeedDemon`)
       .then((res) => res.json())
       .then((data) => {
         setSpeedyMoon(data.products);
       });
 
-
-      Aos.init({
-        duration: 1900,
-      })
-
-
+    Aos.init({
+      duration: 1900,
+    });
   }, []);
 
-
-
   return (
-    <section data-aos="fade-right" className="container mx-auto px-5 py-2 lg:px-32 lg:pt-12 md:mb-12">
+    <section
+      data-aos="fade-right"
+      className="container mx-auto px-5 py-2 lg:px-32 lg:pt-12 md:mb-12"
+    >
       <h2 className="font-bold md:text-5xl text-4xl mb-10 text-center mt-10">
         Shop by category
       </h2>

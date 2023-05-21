@@ -7,7 +7,7 @@ import "sweetalert2/dist/sweetalert2.min.css";
 import useTitle from "../../hooks/useTitle";
 
 const AddToys = () => {
-  useTitle('AddToy')
+  useTitle("AddToy");
   const { user } = useContext(AuthContext);
   const [selectedOption, setSelectedOption] = useState([]);
   const {
@@ -30,7 +30,7 @@ const AddToys = () => {
 
   const onSubmit = (data) => {
     data.category = selectedOption.map((option) => option.value);
-    fetch(`http://localhost:5000/addtoy`, {
+    fetch(`https://toys-server-altafhusain22.vercel.app/addtoy`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
