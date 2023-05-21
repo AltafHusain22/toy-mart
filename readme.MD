@@ -9,7 +9,7 @@
 * Blog: A page of  website that features regularly updated content such as articles .
 * All toys page : there will show all toys that added from users and user can search from the tablure .
 * my toys page : there will show all toys that added from user  .
-* Private Route: its doesn't allow unauthorize user to access the chefs detail page  .
+* Private Route: its doesn't allow unauthorize user to access the toy single details page  .
 # Website Link  
 ## [Toys-Mart](https://toys-mart-78a65.web.app/)
 
