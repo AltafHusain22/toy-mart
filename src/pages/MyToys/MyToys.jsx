@@ -10,6 +10,7 @@ const MyToys = () => {
   useTitle("My Toys");
   const { user } = useContext(AuthContext);
   const [toys, setToys] = useState([]);
+  const [sortingOrder, setSortingOrder] = useState("asc"); // Track the current sorting order
 
   useEffect(() => {
     fetch(`https://toys-server-altafhusain22.vercel.app/alltoys`)
@@ -48,11 +49,28 @@ const MyToys = () => {
     });
   };
 
+  const handleSort = () => {
+    const sortedToys = [...toys].sort((a, b) => {
+      if (sortingOrder === "asc") {
+        return a.price - b.price;
+      } else {
+        return b.price - a.price;
+      }
+    });
+    setToys(sortedToys);
+    setSortingOrder(sortingOrder === "asc" ? "desc" : "asc");
+  };
+
   return (
     <div>
       <h2 className="text-xl md:text-4xl font-bold text-center py-10">
         My Toys
       </h2>
+      <div className="text-center mb-4 mx-auto">
+        <button className="bg-black hover:bg-slate-700 text-white font-bold py-2 px-4 rounded" onClick={handleSort}>
+          Sort by Price
+        </button>
+      </div>
       <div className="overflow-x-auto w-full mt-10 b">
         <table className="table w-full">
           {/* head */}
@@ -65,7 +83,11 @@ const MyToys = () => {
               </th>
               <th className="sm:w-auto">Toy Image</th>
               <th className="sm:w-auto">Toy Name </th>
-              <th className="sm:w-auto">Price</th>
+              <th className="sm:w-auto">
+                <butto onClick={handleSort}>
+                  Price
+                </butto>
+              </th>
               <th className="sm:w-auto">Rating</th>
               <th className="sm:w-auto">Quantity</th>
               <th className="sm:w-auto">Details</th>
