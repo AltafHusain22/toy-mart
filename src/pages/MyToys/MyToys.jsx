@@ -4,8 +4,10 @@ import Swal from "sweetalert2";
 import "sweetalert2/dist/sweetalert2.min.css";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthProvider";
+import useTitle from "../../hooks/useTitle";
 
 const MyToys = () => {
+  useTitle('My Toys')
   const {user} = useContext(AuthContext)
   const [toys, setToys] = useState([]);
   const navigate = useNavigate();

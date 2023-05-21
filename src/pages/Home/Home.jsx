@@ -5,8 +5,10 @@ import Gallery from './HomeComponents/Gallery/Gallery';
 import CategoryTabs from './HomeComponents/CategoryTabs/CategoryTabs';
 import WhyChooseUs from './HomeComponents/WhyChooseUs/WhyChooseUs';
 import OfferSell from './HomeComponents/OfferSell/OfferSell';
+import useTitle from '../../hooks/useTitle';
 
 const Home = () => {
+	useTitle('Home')
 	return (
 		<div>
 			

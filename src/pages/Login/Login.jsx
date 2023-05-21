@@ -5,8 +5,10 @@ import Swal from "sweetalert2";
 import "sweetalert2/dist/sweetalert2.min.css";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import useTitle from "../../hooks/useTitle";
 
 const Login = () => {
+  useTitle('Login')
   const { LoginWithUserAndPass, googleSignUp } = useContext(AuthContext);
   const [error, setError] = useState("");
   const navigate = useNavigate();

@@ -6,8 +6,10 @@ import "sweetalert2/dist/sweetalert2.min.css";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { updateProfile } from "firebase/auth";
+import useTitle from "../../hooks/useTitle";
 
 const Register = () => {
+  useTitle('Register')
   const { createUser,googleSignUp } = useContext(AuthContext);
   const [error, setError] = useState("");
   const navigate = useNavigate()

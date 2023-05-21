@@ -1,9 +1,16 @@
 import React from "react";
+import { Helmet, HelmetProvider } from 'react-helmet-async';
 
 const App = () => {
-  return <div>
-    <h2>Welcome Toys-client</h2>
-  </div>;
+  return (
+    <HelmetProvider>
+    <App>
+      <Helmet>
+        <title>Toys-Mart</title>
+      </Helmet>
+    </App>
+  </HelmetProvider>
+  )
 };
 
 export default App;

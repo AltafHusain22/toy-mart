@@ -4,8 +4,10 @@ import { AuthContext } from "../../context/AuthProvider";
 import CreatableSelect from "react-select/creatable";
 import Swal from "sweetalert2";
 import "sweetalert2/dist/sweetalert2.min.css";
+import useTitle from "../../hooks/useTitle";
 
 const AddToys = () => {
+  useTitle('AddToy')
   const { user } = useContext(AuthContext);
   const [selectedOption, setSelectedOption] = useState([]);
   const {

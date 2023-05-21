@@ -1,8 +1,10 @@
 import React, { useContext } from "react";
 import { useLoaderData } from "react-router-dom";
 import { AuthContext } from "../../context/AuthProvider";
+import useTitle from "../../hooks/useTitle";
 
 const SingleToyDetails = () => {
+  useTitle('single Toy Details')
   const loadedData = useLoaderData();
   const { user } = useContext(AuthContext);
   const { id, name, price, rating, details, picture } = loadedData;
